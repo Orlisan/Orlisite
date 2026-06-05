@@ -11,3 +11,17 @@ function scala() {
 scala();
 console.log(window.innerWidth, window.innerHeight);
 window.addEventListener("resize", scala);
+const barraDiRicerca = document.querySelector(".barra_di_ricerca"); 
+barraDiRicerca.addEventListener("mouseenter", function() {
+    barraDiRicerca.style.borderColor = "red";
+})
+barraDiRicerca.addEventListener("mouseleave", function() {
+    barraDiRicerca.style.borderColor = "gray";
+})
+document.addEventListener("keydown", function(e) {
+    if(e.key == "Enter" && document.activeElement == barraDiRicerca){
+        const valuta = barraDiRicerca.value;
+        barraDiRicerca.value = "Scrivi qualcosa. . ."
+        window.location.href = "search.html?q="+valuta;
+    }
+})
