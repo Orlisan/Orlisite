@@ -8,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow:hidden;
 }
 
 .schermo{
@@ -16,4 +17,9 @@ body {
     position:relative;
     background-color: blue;
     transform-origin: top left;
+}
+.primo_bottone{
+    position:absolute;
+    left:100px;
+    top:50px;
 }
