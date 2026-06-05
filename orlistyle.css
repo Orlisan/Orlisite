@@ -1,12 +1,9 @@
 body {
   background-color: blue;
-  color: aqua;
-  font-family: sans-serif;
+  color: #5affff;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   overflow:hidden;
 }
@@ -25,10 +22,25 @@ body {
     margin:0;
     padding:0;
     display:flex;
-    background-color: aqua;
-    color:black;
-    border:0px;
-    border-radius:8px;
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 0, 0);
+    border: 10px;
+    border-radius:0px;
     cursor:pointer;
-    font-size:16px;
+    font-size:26px;
+}
+
+.prova{
+    position:absolute;
+    left:200px;
+    top:100px;
+    margin:0;
+    padding:0;
+    display:flex;
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 0, 0);
+    border: 10px;
+    border-radius:0px;
+    cursor:pointer;
+    font-size:40px;
 }
