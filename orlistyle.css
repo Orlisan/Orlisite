@@ -88,11 +88,11 @@ body {
 .barra_di_ricerca{
     position:absolute;
     left:75%;
-    top:30%;
+    top:20%;
     width: 300px;
     height:40%;
     background-color: Black;
-    border:10px solid gray;
+    border:6px solid gray;
     border-radius: 0px;
     border-color:gray;
     font-family: 'Inter', sans-serif;
