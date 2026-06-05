@@ -15,11 +15,20 @@ body {
     width:1920px;
     height: 1080px;
     position:relative;
-    background-color: blue;
+    background-color:blueviolet;
     transform-origin: top left;
 }
 .primo_bottone{
     position:absolute;
     left:100px;
     top:50px;
+    margin:0;
+    padding:0;
+    display:flex;
+    background-color: aqua;
+    color:black;
+    border:0px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
 }
