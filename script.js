@@ -9,8 +9,8 @@
 }
 
 scala();*/
-console.log(window.innerWidth, window.innerHeight);
-window.addEventListener("resize", scala);
+//console.log(window.innerWidth, window.innerHeight);
+//window.addEventListener("resize", scala);
 const barraDiRicerca = document.querySelector(".barra_di_ricerca"); 
 barraDiRicerca.addEventListener("mouseenter", function() {
     barraDiRicerca.style.borderColor = "red";
