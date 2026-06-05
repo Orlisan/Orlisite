@@ -1,0 +1,19 @@
+body {
+  background-color: blue;
+  color: aqua;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.schermo{
+    width:1920px;
+    height: 1080px;
+    position:relative;
+    background-color: blue;
+    transform-origin: top left;
+}
