@@ -5,8 +5,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  /*overflow:hidden;*/
-  /*display: flex;*/
 }
 
 .schermo_sopra {
@@ -125,9 +123,12 @@ body {
   text-align:center;
   font-size: 25px;
   color:orangered;
+  white-space:pre;
 }
 .freccia_mod_minecraft{
   position:absolute;
-  left:3;
-  top:4;
+  left:-15px;
+  top:40%;
+  height:25%;
+  width:25%;
 }

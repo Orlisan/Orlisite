@@ -33,27 +33,27 @@ schermoSopra.appendChild(modsDiMinecraft);
 modsDiMinecraft.classList.add("mods_minecraft");
 modsDiMinecraft.textContent = "  Mod di Minecraft";
 let gradi = 0;
+let isInside = false;
 const freccia = document.createElement("img");
 freccia.classList.add("freccia_mod_minecraft");
-freccia.src("textures/freccia.svg");
+freccia.src = "textures/freccia_pixel.svg";
+freccia.style.transform = "scale(2x)";
 modsDiMinecraft.appendChild(freccia);
+animaFreccia();
 modsDiMinecraft.addEventListener("mouseenter", function () {
-  const animazione = setInterval(function () {
-    if (gradi < 360) {
-      freccia.style.transform = "rotate(" + gradi + "deg)";
-      gradi++;
-    }else{
-        clearInterval(animazione);
-    }
-  }, 10);
+  isInside = true;
 });
 modsDiMinecraft.addEventListener("mouseleave", function () {
-  const animazione = setInterval(function () {
-    if (gradi > 0) {
-      freccia.style.transform = "rotate(" + gradi + "deg)";
-      gradi--;
-    }else{
-        clearInterval(animazione);
-    }
-  }, 10);
+  isInside = false;
 });
+function animaFreccia() {
+    const animazione = setInterval(function() {
+        if(isInside && gradi <= 180) {
+            freccia.style.transform = "rotate(" + gradi + "deg)";
+            gradi++;
+        }else if(!isInside && gradi >= 0) {
+            freccia.style.transform = "rotate(" + gradi + "deg)";
+            gradi--;
+        }
+    }, 5);
+}

@@ -1,28 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="90" viewBox="0 0 160 90">
   <!-- punta -->
-  <rect x="76" y="0" width="8" height="8" fill="gray"/>
+  <rect x="76" y="0" width="8" height="8" fill="black"/>
   <!-- riga 2 -->
-  <rect x="68" y="8" width="8" height="8" fill="gray"/>
-  <rect x="84" y="8" width="8" height="8" fill="gray"/>
+  <rect x="68" y="8" width="8" height="8" fill="black"/>
+  <rect x="84" y="8" width="8" height="8" fill="black"/>
   <!-- riga 3 -->
-  <rect x="60" y="16" width="8" height="8" fill="gray"/>
-  <rect x="92" y="16" width="8" height="8" fill="gray"/>
+  <rect x="60" y="16" width="8" height="8" fill="black"/>
+  <rect x="92" y="16" width="8" height="8" fill="black"/>
   <!-- riga 4 -->
-  <rect x="52" y="24" width="8" height="8" fill="gray"/>
-  <rect x="100" y="24" width="8" height="8" fill="gray"/>
+  <rect x="52" y="24" width="8" height="8" fill="black"/>
+  <rect x="100" y="24" width="8" height="8" fill="black"/>
   <!-- riga 5 -->
-  <rect x="44" y="32" width="8" height="8" fill="gray"/>
-  <rect x="108" y="32" width="8" height="8" fill="gray"/>
+  <rect x="44" y="32" width="8" height="8" fill="black"/>
+  <rect x="108" y="32" width="8" height="8" fill="black"/>
   <!-- riga 6 -->
-  <rect x="36" y="40" width="8" height="8" fill="gray"/>
-  <rect x="116" y="40" width="8" height="8" fill="gray"/>
+  <rect x="36" y="40" width="8" height="8" fill="black"/>
+  <rect x="116" y="40" width="8" height="8" fill="black"/>
   <!-- riga 7 -->
-  <rect x="28" y="48" width="8" height="8" fill="gray"/>
-  <rect x="124" y="48" width="8" height="8" fill="gray"/>
+  <rect x="28" y="48" width="8" height="8" fill="black"/>
+  <rect x="124" y="48" width="8" height="8" fill="black"/>
   <!-- riga 8 -->
-  <rect x="20" y="56" width="8" height="8" fill="gray"/>
-  <rect x="132" y="56" width="8" height="8" fill="gray"/>
+  <rect x="20" y="56" width="8" height="8" fill="black"/>
+  <rect x="132" y="56" width="8" height="8" fill="black"/>
   <!-- riga 9 -->
-  <rect x="12" y="64" width="8" height="8" fill="gray"/>
-  <rect x="140" y="64" width="8" height="8" fill="gray"/>
+  <rect x="12" y="64" width="8" height="8" fill="black"/>
+  <rect x="140" y="64" width="8" height="8" fill="black"/>
 </svg>
