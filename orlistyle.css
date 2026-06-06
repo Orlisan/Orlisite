@@ -1,6 +1,6 @@
 body {
   background-color: black;
-  color: #5affff;
+  color: orangered;
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
@@ -124,6 +124,7 @@ body {
   font-size: 25px;
   color:orangered;
   white-space:pre;
+  z-index: 4;
 }
 .freccia_mod_minecraft{
   position:absolute;
@@ -131,4 +132,22 @@ body {
   top:40%;
   height:25%;
   width:25%;
+}
+.spazio_nero_per_far_slidare_il_menu{
+  background-color: black;
+  position:absolute;
+  left:15%;
+  top: 0%;
+  width: 500px;
+  height:20%;
+  z-index: 4;
+}
+.menu_mods{
+  position: absolute;
+  z-index: 3;
+  background-color: rgb(49, 22, 0);
+  left:21%;
+  top:-270px; 
+  width: 300px;
+  height: 340px;
 }
