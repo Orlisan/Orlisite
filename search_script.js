@@ -120,7 +120,7 @@ function instanziaBottoni(arrayProgetti) {
     modmenu.style.width = "80%";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      console.log("test superato");
+      window.location.href = "project-page.html?id="+mod.getId();
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

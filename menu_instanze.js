@@ -1,68 +1,52 @@
-import { Project_info } from "./Project_info.js";
 import * as Mods from "./var_globali.js";
-import * as IstanzaMenuMod from "./menu_instanze.js";
-const barraDiRicerca = document.querySelector(".barra_di_ricerca");
-barraDiRicerca.addEventListener("mouseenter", function () {
-  barraDiRicerca.style.borderColor = "red";
-});
-barraDiRicerca.addEventListener("mouseleave", function () {
-  barraDiRicerca.style.borderColor = "gray";
-});
-document.addEventListener("keydown", function (e) {
-  if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
-    const valuta = barraDiRicerca.value;
-    if (valuta != null && valuta.trim() != "") {
-      barraDiRicerca.value = "";
-      window.location.href = "search.html?q=" + valuta;
-    }
+
+export function creaMenuMods() {
+  const modsDiMinecraft = document.createElement("div");
+  const schermoSopra = document.querySelector(".schermo_sopra");
+  schermoSopra.appendChild(modsDiMinecraft);
+  modsDiMinecraft.classList.add("mods_minecraft");
+  modsDiMinecraft.textContent = "  Mod di Minecraft";
+  let gradi = 0;
+  let isInside = false;
+  const menu = document.querySelector(".menu_mods");
+  const freccia = document.createElement("img");
+  freccia.classList.add("freccia_mod_minecraft");
+  freccia.src = "textures/freccia_pixel.svg";
+  freccia.style.transform = "scale(2x)";
+  modsDiMinecraft.appendChild(freccia);
+  inizializzaMenu(Mods);
+  animaFreccia();
+  modsDiMinecraft.addEventListener("mouseenter", function () {
+    isInside = true;
+  });
+  modsDiMinecraft.addEventListener("mouseleave", function () {
+    isInside = false;
+  });
+
+  menu.addEventListener("mouseenter", function () {
+    isInside = true;
+  });
+  menu.addEventListener("mouseleave", function () {
+    isInside = false;
+  });
+  function animaFreccia() {
+    const animazione = setInterval(function () {
+      const stileMenu = window.getComputedStyle(menu);
+      const topAttuale = parseInt(stileMenu.top) || 0;
+
+      if (isInside && gradi <= 180) {
+        freccia.style.transform = "rotate(" + gradi + "deg)";
+        menu.style.top = topAttuale + 2 + "px";
+        gradi++;
+      } else if (!isInside && gradi >= 0) {
+        freccia.style.transform = "rotate(" + gradi + "deg)";
+        menu.style.top = topAttuale - 2 + "px";
+        gradi--;
+      }
+    }, 5);
   }
-});
-IstanzaMenuMod.creaMenuMods();
-/*const modsDiMinecraft = document.createElement("div");
-const schermoSopra = document.querySelector(".schermo_sopra");
-schermoSopra.appendChild(modsDiMinecraft);
-modsDiMinecraft.classList.add("mods_minecraft");
-modsDiMinecraft.textContent = "  Mod di Minecraft";
-let gradi = 0;
-let isInside = false;
-const menu = document.querySelector(".menu_mods");
-const freccia = document.createElement("img");
-freccia.classList.add("freccia_mod_minecraft");
-freccia.src = "textures/freccia_pixel.svg";
-freccia.style.transform = "scale(2x)";
-modsDiMinecraft.appendChild(freccia);
-IstanzaMenuMod.inizializzaMenu(Mods);
-animaFreccia();
-modsDiMinecraft.addEventListener("mouseenter", function () {
-  isInside = true;
-});
-modsDiMinecraft.addEventListener("mouseleave", function () {
-  isInside = false;
-});
-
-menu.addEventListener("mouseenter", function () {
-  isInside = true;
-});
-menu.addEventListener("mouseleave", function () {
-  isInside = false;
-});
-function animaFreccia() {
-  const animazione = setInterval(function () {
-    const stileMenu = window.getComputedStyle(menu);
-    const topAttuale = parseInt(stileMenu.top) || 0;
-
-    if (isInside && gradi <= 180) {
-      freccia.style.transform = "rotate(" + gradi + "deg)";
-      menu.style.top = topAttuale + 2 + "px";
-      gradi++;
-    } else if (!isInside && gradi >= 0) {
-      freccia.style.transform = "rotate(" + gradi + "deg)";
-      menu.style.top = topAttuale - 2 + "px";
-      gradi--;
-    }
-  }, 5);
-}*/
-function inizializzaMenu(Mods) {
+}
+export function inizializzaMenu(Mods) {
   const menu = document.querySelector(".menu_mods");
   const mods_per_page = 3;
   const arrays = [];
@@ -133,7 +117,7 @@ function inizializzaMenu(Mods) {
     });
   }
 }
-function instanziaBottoni(arrayMods) {
+export function instanziaBottoni(arrayMods) {
   const oldMod1 = document.querySelector(".mod_1");
   const oldMod2 = document.querySelector(".mod_2");
   const oldMod3 = document.querySelector(".mod_3");
@@ -158,7 +142,7 @@ function instanziaBottoni(arrayMods) {
     modmenu.style.width = "280px";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      window.location.href = "project-page.html?id="+mod.getId();
+      window.location.href = "project-page.html?id=" + mod.getId();
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();
