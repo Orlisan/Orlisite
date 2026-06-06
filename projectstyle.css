@@ -1,0 +1,49 @@
+.title_project{
+    z-index: 1;
+    position:absolute;
+    left:3%;
+    top:10%;
+    font-family:'Monocraft', sans-serif;
+    font-size: 48px;
+    text-align: center;
+    font-weight:bold;
+    color:yellow;
+    background-color: transparent;
+    width: 75%;
+    height:30%;
+}
+.description_project{
+    z-index: 2;
+    position:absolute;
+    left:6%;
+    top:40%;
+    font-family:'Monocraft', sans-serif;
+    text-align: left;
+    color:white;
+    width: 75%;
+    height:100%;
+}
+.download_file{
+    z-index: 2;
+    position:absolute;
+    left:70%;
+    top:5%;
+    width: 200px;
+    height: 100px;
+    font-family:'Monocraft', sans-serif;
+    text-align: center;
+    color:white;
+    background-color: orange;
+    border:10px;
+    border-radius: 1px;
+    border-color:orangered;
+}
+.sfondo_descrizione{
+    z-index: 1;
+    background-color: rgb(54, 33, 0);
+    position:absolute;
+    left:3%;
+    top:40%;
+    border-radius: 10px;
+    width: 79%;
+}

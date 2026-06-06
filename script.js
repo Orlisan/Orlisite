@@ -11,7 +11,7 @@ document.addEventListener("keydown", function (e) {
   if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
     const valuta = barraDiRicerca.value;
     if (valuta != null && valuta.trim() != "") {
-      barraDiRicerca.value = "Scrivi qualcosa. . .";
+      barraDiRicerca.value = "";
       window.location.href = "search.html?q=" + valuta;
     }
   }
@@ -29,7 +29,7 @@ freccia.classList.add("freccia_mod_minecraft");
 freccia.src = "textures/freccia_pixel.svg";
 freccia.style.transform = "scale(2x)";
 modsDiMinecraft.appendChild(freccia);
-inizializzaMenu();
+inizializzaMenu(Mods);
 animaFreccia();
 modsDiMinecraft.addEventListener("mouseenter", function () {
   isInside = true;
@@ -60,7 +60,8 @@ function animaFreccia() {
     }
   }, 5);
 }
-function inizializzaMenu() {
+function inizializzaMenu(Mods) {
+  const menu = document.querySelector(".menu_mods");
   const mods_per_page = 3;
   const arrays = [];
 
@@ -100,7 +101,7 @@ function inizializzaMenu() {
       if (paginaCorrente + 1 < pagineTotali) {
         paginaCorrente += 1;
         instanziaBottoni(arrays[paginaCorrente]);
-        numPagina.textContent = (paginaCorrente+1)+"/"+pagineTotali;
+        numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
       }
     });
 
@@ -125,11 +126,10 @@ function inizializzaMenu() {
       if (paginaCorrente - 1 >= 0) {
         paginaCorrente -= 1;
         instanziaBottoni(arrays[paginaCorrente]);
-        numPagina.textContent = (paginaCorrente+1)+"/"+pagineTotali;
+        numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
       }
     });
   }
-  
 }
 function instanziaBottoni(arrayMods) {
   const oldMod1 = document.querySelector(".mod_1");
@@ -156,7 +156,7 @@ function instanziaBottoni(arrayMods) {
     modmenu.style.width = "280px";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      console.log("test superato");
+      window.location.href = "project-page.html?id="+mod.getId();
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

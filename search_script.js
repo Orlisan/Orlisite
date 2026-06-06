@@ -18,7 +18,7 @@ Contents.progetti.forEach((progetto) => {
     console.log("Progetto Trovato: " + progetto.getTitle());
   }
 });
-let progetti_per_page = 6;
+let progetti_per_page = 4;
 const arrays = [];
 
 for (let i = 0; i < progettiTrovati.length; i += progetti_per_page) {
@@ -42,17 +42,17 @@ if (arrays.length > 0) {
     const bottoneDestra = document.createElement("button");
     bottoneDestra.style.position = "absolute";
     bottoneDestra.style.left = "80%";
-    bottoneDestra.style.top = "10%";
+    bottoneDestra.style.top = "5%";
     bottoneDestra.style.width = "100px";
     bottoneDestra.style.height = "75%";
     bottoneDestra.style.backgroundColor = "black";
     const imgBotDestra = document.createElement("img");
     imgBotDestra.style.position = "absolute";
     imgBotDestra.src = "textures/freccia_pagina.svg";
-    imgBotDestra.width = "100px";
-    imgBotDestra.height = "75%";
-    //imgBotDestra.style.left = "-2px";
-    // imgBotDestra.style.top = "-3px";
+    imgBotDestra.width = "100";
+    imgBotDestra.height = "100";
+    imgBotDestra.style.left = "-15px";
+    imgBotDestra.style.top = "-10px";
     bottoneDestra.appendChild(imgBotDestra);
     menu.appendChild(bottoneDestra);
     bottoneDestra.addEventListener("click", function () {
@@ -63,33 +63,99 @@ if (arrays.length > 0) {
       }
     });
 
-  const bottoneSinistra = document.createElement("button");
-  bottoneSinistra.style.position = "absolute";
-  bottoneSinistra.style.left = "40%";
-  bottoneSinistra.style.top = "10%";
-  bottoneSinistra.style.width = "100px";
-  bottoneSinistra.style.height = "75%";
-  bottoneSinistra.style.backgroundColor = "black";
-  const imgBotSinistra = document.createElement("img");
-  imgBotSinistra.style.position = "absolute";
-  imgBotSinistra.src = "textures/freccia_pagina.svg";
-  imgBotSinistra.style.transform = "rotate(180deg)";
-  imgBotSinistra.width = "100px";
-  imgBotSinistra.height = "75%";
-  //imgBotSinistra.style.left = "-5px";
-  //imgBotSinistra.style.top = "-4px";
-  bottoneSinistra.appendChild(imgBotSinistra);
-  menu.appendChild(bottoneSinistra);
-  bottoneSinistra.addEventListener("click", function () {
-    if (paginaCorrente - 1 >= 0) {
-      paginaCorrente -= 1;
-      instanziaBottoni(arrays[paginaCorrente]);
-      numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
-    }
-  });
-}
-}else{
-    
+    const bottoneSinistra = document.createElement("button");
+    bottoneSinistra.style.position = "absolute";
+    bottoneSinistra.style.left = "40%";
+    bottoneSinistra.style.top = "5%";
+    bottoneSinistra.style.width = "100px";
+    bottoneSinistra.style.height = "75%";
+    bottoneSinistra.style.backgroundColor = "black";
+    const imgBotSinistra = document.createElement("img");
+    imgBotSinistra.style.position = "absolute";
+    imgBotSinistra.src = "textures/freccia_pagina.svg";
+    imgBotSinistra.style.transform = "rotate(180deg)";
+    imgBotSinistra.width = "100";
+    imgBotSinistra.height = "100";
+    imgBotSinistra.style.left = "-15px";
+    imgBotSinistra.style.top = "-10px";
+    bottoneSinistra.appendChild(imgBotSinistra);
+    menu.appendChild(bottoneSinistra);
+    bottoneSinistra.addEventListener("click", function () {
+      if (paginaCorrente - 1 >= 0) {
+        paginaCorrente -= 1;
+        instanziaBottoni(arrays[paginaCorrente]);
+        numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
+      }
+    });
+  }
+} else {
 }
 
-function instanziaBottoni(arrayProgetti) {}
+function instanziaBottoni(arrayProgetti) {
+  const oldMod1 = document.querySelector(".project_1");
+  const oldMod2 = document.querySelector(".project_2");
+  const oldMod3 = document.querySelector(".project_3");
+  const oldMod4 = document.querySelector(".project_4");
+  if (oldMod1) {
+    oldMod1.remove();
+  }
+  if (oldMod2) {
+    oldMod2.remove();
+  }
+  if (oldMod3) {
+    oldMod3.remove();
+  }
+  if (oldMod4) {
+    oldMod4.remove();
+  }
+  let numBott = 0;
+  let current_spazio = 10;
+  arrayProgetti.forEach((mod) => {
+    numBott++;
+    const modmenu = document.createElement("button");
+    modmenu.classList.add("project_" + numBott);
+    modmenu.style.position = "absolute";
+    modmenu.style.left = "10px";
+    modmenu.style.top = current_spazio + "px";
+    modmenu.style.width = "80%";
+    modmenu.style.height = "100px";
+    modmenu.addEventListener("click", function () {
+      console.log("test superato");
+    });
+    const imgMod = document.createElement("img");
+    imgMod.src = mod.getImgPath();
+    imgMod.style.position = "absolute";
+    imgMod.style.left = "10px";
+    imgMod.style.top = "10px";
+    imgMod.style.width = "80px";
+    imgMod.style.height = "80px";
+
+    const titleMod = document.createElement("div");
+    titleMod.style.position = "absolute";
+    titleMod.style.left = "100px";
+    titleMod.style.top = "10px";
+    titleMod.style.width = "60%";
+    titleMod.style.height = "40px";
+    titleMod.style.fontFamily = `'Monocraft', sans-serif`;
+    titleMod.textContent = mod.getTitle();
+    titleMod.style.textAlign = "left";
+    titleMod.style.fontSize = "20px";
+
+    const summaryMod = document.createElement("div");
+    summaryMod.style.position = "absolute";
+    summaryMod.style.left = "100px";
+    summaryMod.style.top = "60px";
+    summaryMod.style.width = "60%";
+    summaryMod.style.height = "40px";
+    summaryMod.style.fontFamily = `'Monocraft', sans-serif`;
+    summaryMod.textContent = mod.getSummary();
+    summaryMod.style.textAlign = "left";
+    summaryMod.style.fontSize = "16px";
+
+    modmenu.appendChild(imgMod);
+    modmenu.appendChild(titleMod);
+    modmenu.appendChild(summaryMod);
+    document.querySelector(".schermo_sotto").appendChild(modmenu);
+    current_spazio += 110;
+  });
+}
