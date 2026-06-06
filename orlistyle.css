@@ -10,6 +10,7 @@ body {
 }
 
 .schermo_sopra {
+  z-index: 2;
   width: 100%;
   height: 20%;
   position: relative;
@@ -17,6 +18,7 @@ body {
   transform-origin: top left;
 }
 .schermo_sotto {
+  z-index: 1;
   left: 0px;
   top: 400px;
   width: 100%;
@@ -100,4 +102,32 @@ body {
     margin:0px;
     padding:0px;
     font-size:20px;
+}
+@font-face{
+  font-family: 'Monocraft';
+  src:url('fonts/Monocraft.ttc');
+}
+.mods_minecraft{
+  position:absolute;
+  left:20%;
+  top: 20%;
+  width: 300px;
+  height: 40px;
+  background-color: gray;
+  border:6px solid orange;
+  border-color:orange;
+  border-radius: 4px;
+  font-family:'Monocraft', sans-serif;
+  font-weight: bold;
+  margin:0px;
+  padding-left:12px;
+  padding-top:17px;
+  text-align:center;
+  font-size: 25px;
+  color:orangered;
+}
+.freccia_mod_minecraft{
+  position:absolute;
+  left:3;
+  top:4;
 }

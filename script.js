@@ -11,17 +11,49 @@
 scala();*/
 //console.log(window.innerWidth, window.innerHeight);
 //window.addEventListener("resize", scala);
-const barraDiRicerca = document.querySelector(".barra_di_ricerca"); 
-barraDiRicerca.addEventListener("mouseenter", function() {
-    barraDiRicerca.style.borderColor = "red";
-})
-barraDiRicerca.addEventListener("mouseleave", function() {
-    barraDiRicerca.style.borderColor = "gray";
-})
-document.addEventListener("keydown", function(e) {
-    if(e.key == "Enter" && document.activeElement == barraDiRicerca){
-        const valuta = barraDiRicerca.value;
-        barraDiRicerca.value = "Scrivi qualcosa. . ."
-        window.location.href = "search.html?q="+valuta;
+const barraDiRicerca = document.querySelector(".barra_di_ricerca");
+barraDiRicerca.addEventListener("mouseenter", function () {
+  barraDiRicerca.style.borderColor = "red";
+});
+barraDiRicerca.addEventListener("mouseleave", function () {
+  barraDiRicerca.style.borderColor = "gray";
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
+    const valuta = barraDiRicerca.value;
+    if (valuta != null && valuta.trim() != "") {
+      barraDiRicerca.value = "Scrivi qualcosa. . .";
+      window.location.href = "search.html?q=" + valuta;
     }
-})
+  }
+});
+const modsDiMinecraft = document.createElement("div");
+const schermoSopra = document.querySelector(".schermo_sopra");
+schermoSopra.appendChild(modsDiMinecraft);
+modsDiMinecraft.classList.add("mods_minecraft");
+modsDiMinecraft.textContent = "  Mod di Minecraft";
+let gradi = 0;
+const freccia = document.createElement("img");
+freccia.classList.add("freccia_mod_minecraft");
+freccia.src("textures/freccia.svg");
+modsDiMinecraft.appendChild(freccia);
+modsDiMinecraft.addEventListener("mouseenter", function () {
+  const animazione = setInterval(function () {
+    if (gradi < 360) {
+      freccia.style.transform = "rotate(" + gradi + "deg)";
+      gradi++;
+    }else{
+        clearInterval(animazione);
+    }
+  }, 10);
+});
+modsDiMinecraft.addEventListener("mouseleave", function () {
+  const animazione = setInterval(function () {
+    if (gradi > 0) {
+      freccia.style.transform = "rotate(" + gradi + "deg)";
+      gradi--;
+    }else{
+        clearInterval(animazione);
+    }
+  }, 10);
+});
