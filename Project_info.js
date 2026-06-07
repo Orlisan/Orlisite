@@ -6,13 +6,15 @@ export class Project_info{
     #pathDescription;
     #jarPath;
     #id;
-    constructor(pathImg, title, summary, id, pathDescription, jarPath) {
+    #gallery;
+    constructor(pathImg, title, summary, id, pathDescription, jarPath, gallery) {
         this.#pathImg = pathImg;
         this.#summary = summary;
         this.#title = title;
         this.#pathDescription = pathDescription;
         this.#jarPath = jarPath;
         this.#id = id;
+        this.#gallery = gallery
     }
     getImgPath(){
         return this.#pathImg;
@@ -38,5 +40,8 @@ export class Project_info{
     }
     getId() {
         return this.#id;
+    }
+    getGallery() {
+        return this.#gallery;
     }
 }

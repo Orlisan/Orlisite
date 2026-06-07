@@ -1,43 +1,23 @@
 # Sponges Overhaul
-
-Sponges Overhaul adds seven new sponge types to Minecraft, each designed to absorb something different. Whether you're dealing with lava lakes, mob invasions, or a cloud of lingering potions, there's a sponge for that.
-
+Sponges Overhaul aggiunge sette nuovi tipi di spugna a Minecraft, ognuna progettata per assorbire qualcosa di diverso. Che tu stia affrontando laghi di lava, invasioni di mob, o una nuvola di pozioni persistenti, c'è una spugna per ogni occasione.
 ***
-
-## Getting started
-
-All sponges in this mod replace the vanilla sponge — just drop a vanilla sponge in your crafting table to convert it into the mod's base water sponge. From there, every other type is crafted by surrounding a sponge with 4 of its matching ingredient in a cross pattern. Wet sponges dry out in a furnace as usual. Note that only sponges where it makes sense — water, snow, and diamond — will dry out automatically when placed in the Nether.
-
+## Per iniziare
+Tutte le spugne di questa mod sostituiscono la spugna vanilla — basta mettere una spugna vanilla nel tavolo da lavoro per convertirla nella spugna d'acqua base della mod. Da lì, ogni altro tipo si crea circondando una spugna con 4 del suo ingrediente corrispondente a croce. Le spugne bagnate si asciugano in una fornace come al solito. Da notare che solo le spugne per cui ha senso — acqua, neve e diamante — si asciugheranno automaticamente nel Nether.
 ***
-
-## The Sponges
-
-**Sponge** — The classic, now reworked. Absorbs water and underwater plants in a radius around it.
-
-**Lava Sponge** — Crafted with lava buckets. Works like the water sponge, but for lava. Great for the Nether.
-
-**Fire Sponge** — Crafted with fire charges. Absorbs fire blocks in a spherical area. If it soaks up soul fire instead, the wet version takes on a blue appearance as a small visual bonus.
-
-**Potion Sponge** — Crafted with nether wart. Absorbs lingering potion clouds on the ground. Handy for cleaning up after a witch fight.
-
-**Undead Sponge** — Crafted with bone blocks. Absorbs nearby undead mobs and stores them inside. The wet version slowly releases them back one by one over time — handle it carefully, or smelt it to get your dry sponge back.
-
-**Snow Sponge** — Crafted with snow blocks. Absorbs snow and powder snow in an area. Perfect for clearing out winter landscapes.
-
-**Diamond Sponge** — Crafted with diamonds around a water sponge. Absorbs water just like the regular one, but with a dramatically larger range and capacity. Worth the investment when draining an ocean monument.
-
+## Le Spugne
+**Spugna** — La classica, ora rielaborata. Assorbe acqua e piante subacquee in un raggio attorno a sé.
+**Spugna di Lava** — Si crea con secchi di lava. Funziona come la spugna d'acqua, ma per la lava. Ottima per il Nether.
+**Spugna di Fuoco** — Si crea con cariche di fuoco. Assorbe i blocchi di fuoco in un'area sferica. Se assorbe fuoco dell'anima, la versione bagnata assume un aspetto blu come piccolo bonus visivo.
+**Spugna di Pozioni** — Si crea con verruca del nether. Assorbe le nuvole di pozioni persistenti sul terreno. Utile per fare pulizia dopo uno scontro con una strega.
+**Spugna Non-Morta** — Si crea con blocchi di ossa. Assorbe i mob non-morti nelle vicinanze e li conserva al suo interno. La versione bagnata li rilascia lentamente uno alla volta nel tempo — maneggiare con cura, oppure fonderla per recuperare la spugna asciutta.
+**Spugna di Neve** — Si crea con blocchi di neve. Assorbe neve e neve in polvere in un'area. Perfetta per ripulire paesaggi invernali.
+**Spugna di Diamante** — Si crea con diamanti attorno a una spugna d'acqua. Assorbe acqua come quella normale, ma con un raggio e una capacità notevolmente maggiori. Vale l'investimento per svuotare un monumento oceanico.
 ***
-
-## The 2×2×2 Cube
-
-Every sponge type has a hidden upgrade mechanic: if you place 8 of the same type in a 2×2×2 cube, they link together and act as one supercharged unit with 4× the range and 8× the absorption capacity. Great for large-scale drainage or clearing out massive fires.
-
+## Il Cubo 2×2×2
+Ogni tipo di spugna ha un meccanismo di potenziamento nascosto: se ne piazzi 8 dello stesso tipo in un cubo 2×2×2, si collegano tra loro e agiscono come un'unica unità potenziata con 4× il raggio e 8× la capacità di assorbimento. Ottimo per svuotamenti su larga scala o per spegnere incendi enormi.
 ***
-
-## Developer API
-
-`CustomSponges` accepts a fluid class, a block class, or a block tag as the target. Here's a quick example:
-
+## API per Sviluppatori
+`CustomSponges` accetta una classe di fluido, una classe di blocco, o un tag di blocco come bersaglio. Ecco un esempio rapido:
 ```
 Block PETROL_SPONGE = new CustomSponges(
     SpongeBlocks.spongeProperties.setId(
@@ -47,16 +27,11 @@ Block PETROL_SPONGE = new CustomSponges(
     PetrolFluid.class,
     WET_PETROL_SPONGE
 );
-
 SpongeBlocks.spongeBlocks.add(PETROL_SPONGE);
 ```
-
-For the full API documentation and more details, see [API.md](https://github.com/Orlisan/Sponges-Overhaul/blob/main/API.md) on GitHub.
-
+Per la documentazione completa dell'API e ulteriori dettagli, vedi [API.md](https://github.com/Orlisan/Sponges-Overhaul/blob/main/API.md) su GitHub.
 ***
+## Una nota dall'autore
+Ciao! Se hai un'idea per un nuovo tipo di spugna, sentiti libero di suggerirla nei commenti — sarò felice di aggiungerla e di creditarti per l'idea. Segnalazioni di bug e feedback sono sempre apprezzati.
 
-## A note from the author
-
-Hi! If you have an idea for a new sponge type, feel free to suggest it in the comments — I'd be happy to add it and credit you for the idea. Bug reports and feedback are always appreciated.
-
-If you've read this far, you have my gratitude!
+Se hai letto fin qui, hai la mia gratitudine!

@@ -1,20 +1,57 @@
-import * as Mods from "./var_globali.js";
-
-export function creaMenuMods() {
+export function creaLogo() {
+  const orlisite = document.createElement("button");
+  orlisite.style.position = "absolute";
+  orlisite.style.left = "0.5%";
+  orlisite.style.top = "5%";
+  orlisite.style.width = "20%";
+  orlisite.style.height = "70%";
+  orlisite.style.fontSize = "30px";
+  orlisite.style.color = "red";
+  orlisite.style.backgroundColor = "black";
+  orlisite.textContent = "OrliSite";
+  orlisite.style.fontFamily = `'Monocraft', sans-serif`;
+  orlisite.style.textAlign = "center";
+  orlisite.style.fontWeight = "bold";
+  orlisite.style.border = "none";
+  orlisite.style.outline = "none";
+  document.querySelector(".schermo_sopra").appendChild(orlisite);
+  orlisite.addEventListener("click", function() {
+    window.location.href = "index.html";
+  });
+}
+export function creaBarraDiRicerca() {
+  const barraDiRicerca = document.querySelector(".barra_di_ricerca");
+barraDiRicerca.addEventListener("mouseenter", function () {
+  barraDiRicerca.style.borderColor = "red";
+});
+barraDiRicerca.addEventListener("mouseleave", function () {
+  barraDiRicerca.style.borderColor = "gray";
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
+    const valuta = barraDiRicerca.value;
+    if (valuta != null && valuta.trim() != "") {
+      barraDiRicerca.value = "";
+      window.location.href = "search.html?q=" + valuta;
+    }
+  }
+});
+}
+export function creaMenu(Progetti, menuProgetto, menu_class, menu_name) {
   const modsDiMinecraft = document.createElement("div");
   const schermoSopra = document.querySelector(".schermo_sopra");
   schermoSopra.appendChild(modsDiMinecraft);
-  modsDiMinecraft.classList.add("mods_minecraft");
-  modsDiMinecraft.textContent = "  Mod di Minecraft";
+  modsDiMinecraft.classList.add(menu_class);
+  modsDiMinecraft.textContent = "  "+menu_name;
   let gradi = 0;
   let isInside = false;
-  const menu = document.querySelector(".menu_mods");
+  const menu = document.querySelector(menuProgetto);
   const freccia = document.createElement("img");
-  freccia.classList.add("freccia_mod_minecraft");
+  freccia.classList.add("freccia_"+menuProgetto.slice(1));
   freccia.src = "textures/freccia_pixel.svg";
   freccia.style.transform = "scale(2x)";
   modsDiMinecraft.appendChild(freccia);
-  inizializzaMenu(Mods);
+  inizializzaMenu(Progetti , menuProgetto);
   animaFreccia();
   modsDiMinecraft.addEventListener("mouseenter", function () {
     isInside = true;
@@ -46,16 +83,16 @@ export function creaMenuMods() {
     }, 5);
   }
 }
-export function inizializzaMenu(Mods) {
-  const menu = document.querySelector(".menu_mods");
+export function inizializzaMenu(Progetti, menuProgetto) {
+  const menu = document.querySelector(menuProgetto);
   const mods_per_page = 3;
   const arrays = [];
 
-  for (let i = 0; i < Mods.mods.length; i += mods_per_page) {
-    const blocco = Mods.mods.slice(i, i + mods_per_page);
+  for (let i = 0; i < Progetti.length; i += mods_per_page) {
+    const blocco = Progetti.slice(i, i + mods_per_page);
     arrays.push(blocco);
   }
-  instanziaBottoni(arrays[0]);
+  instanziaBottoni(arrays[0], menuProgetto);
   let paginaCorrente = 0;
   let pagineTotali = arrays.length;
   const numPagina = document.createElement("div");
@@ -86,7 +123,7 @@ export function inizializzaMenu(Mods) {
     bottoneDestra.addEventListener("click", function () {
       if (paginaCorrente + 1 < pagineTotali) {
         paginaCorrente += 1;
-        instanziaBottoni(arrays[paginaCorrente]);
+        instanziaBottoni(arrays[paginaCorrente], menuProgetto);
         numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
       }
     });
@@ -117,10 +154,10 @@ export function inizializzaMenu(Mods) {
     });
   }
 }
-export function instanziaBottoni(arrayMods) {
-  const oldMod1 = document.querySelector(".mod_1");
-  const oldMod2 = document.querySelector(".mod_2");
-  const oldMod3 = document.querySelector(".mod_3");
+export function instanziaBottoni(arrayMods, menuProgetto) {
+  const oldMod1 = document.querySelector(menuProgetto+"_mod_1");
+  const oldMod2 = document.querySelector(menuProgetto+"_mod_2");
+  const oldMod3 = document.querySelector(menuProgetto+"_mod_3");
   if (oldMod1) {
     oldMod1.remove();
   }
@@ -135,7 +172,7 @@ export function instanziaBottoni(arrayMods) {
   arrayMods.forEach((mod) => {
     numBott++;
     const modmenu = document.createElement("button");
-    modmenu.classList.add("mod_" + numBott);
+    modmenu.classList.add(menuProgetto.slice(1)+"_mod_" + numBott);
     modmenu.style.position = "absolute";
     modmenu.style.left = "10px";
     modmenu.style.top = current_spazio + "px";
@@ -177,7 +214,7 @@ export function instanziaBottoni(arrayMods) {
     modmenu.appendChild(imgMod);
     modmenu.appendChild(titleMod);
     modmenu.appendChild(summaryMod);
-    document.querySelector(".menu_mods").appendChild(modmenu);
+    document.querySelector(menuProgetto).appendChild(modmenu);
     current_spazio += 110;
   });
 }

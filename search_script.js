@@ -7,16 +7,7 @@ document.title = "Ricerca - " + ricerca;
 document.querySelector(".nome_ricerca").textContent =
   "Risultati di ricerca di: " + ricerca;
 Contents.progetti.forEach((progetto) => {
-  let matchingChars = 0;
-  for (let i = 0; i < progetto.getTitle().length; i++) {
-    if (progetto.getTitle().charAt(i) == ricerca.charAt(i)) {
-      matchingChars++;
-    }
-  }
-  if (matchingChars >= progetto.getTitle().length - 5) {
-    progettiTrovati.push(progetto);
-    console.log("Progetto Trovato: " + progetto.getTitle());
-  }
+  if(progetto.getTitle().toLowerCase().includes(ricerca.toLowerCase())) {progettiTrovati.push(progetto)}
 });
 let progetti_per_page = 4;
 const arrays = [];

@@ -21,13 +21,24 @@ export const unsmpds = new Project_info(
   "UNSMPDS-Optimized",
   "Improved BattyLeaf mod",
   "unsmpds",
-  null,
-  null
+  "descrizioni/unstable_smp.md",
+  "downloads/unsmpds_optimized-1.0.0.jar"
 );
+export const javaita = new Project_info(
+  "textures/javaita_logo.png",
+  "JavaITA",
+  "Java in Italiano!",
+  "javaita",
+  "descrizioni/javaita.md",
+  "downloads/JavaITA.zip",
+  ["./textures/404.png", "textures/logo_spugne.png"]
+)
 export const projectIds = {
     "scythesmod": scythesmod,
     "spongesoverhaul":spongesoverhaul,
-    "unsmpds": unsmpds
+    "unsmpds": unsmpds,
+    "javaita": javaita
 }
+export const altriProgetti = [javaita];
 export const mods = [scythesmod, spongesoverhaul, unsmpds];
-export const progetti = [...mods];
+export const progetti = [...mods, ...altriProgetti];
