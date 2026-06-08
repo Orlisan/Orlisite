@@ -189,15 +189,17 @@ body {
     top:5%;
     color:white;
 }
-.sottotitolo_index_1{
-  position:absolute;
-  left:6%;
-  top:15%;
+.sottotitolo_index_1, .sottotitolo_index_2, .sottotitolo_index_3 {
+  position: absolute;
   color:gainsboro;
+  left:6%;
+}
+.sottotitolo_index_1{
+  top:15%;
 }
 .sottotitolo_index_2{
-  position:absolute;
-  left:6%;
   top:20%;
-  color:gainsboro;
+}
+.sottotitolo_index_3{
+  top:25%;
 }

@@ -1,6 +1,7 @@
 import { Project_info } from "./Project_info.js";
 import * as Progetti from "./var_globali.js";
 import * as InstanzaSchermoSopra from "./menu_instanze.js";
+import * as Traduttore from "./traduttore.js";
 InstanzaSchermoSopra.creaLogo();
 InstanzaSchermoSopra.creaBarraDiRicerca();
 InstanzaSchermoSopra.creaMenu(
@@ -21,7 +22,7 @@ const spiatoreEntrateEdUscite = new IntersectionObserver(fun_007, {
 const schermoSotto = document.querySelector(".schermo_sotto");
 const title_project = document.createElement("h1");
 title_project.classList.add("title_index");
-title_project.textContent = "Benvenuti al sito ufficiale di Orlisan!!";
+title_project.textContent = Traduttore.traduci("title_homepage");
 creaOmbraColorataAlPassaggio(title_project);
 document.querySelector(".schermo_sotto").appendChild(title_project);
 spiatoreEntrateEdUscite.observe(title_project);
@@ -87,15 +88,21 @@ function fun_007(observedElements) {
   });
 }
 
-const sottotitolo1 = document.createElement("h2");
-sottotitolo1.classList.add("sottotitolo_index_1");
-sottotitolo1.textContent = "Sito scritto interamente in html, css e javascript,";
-const sottotitolo2 = document.createElement("h2");
-sottotitolo2.classList.add("sottotitolo_index_2");
-sottotitolo2.textContent = "nessuna pressa di parole è stata sfruttata!";
-creaOmbraColorataAlPassaggio(sottotitolo1);
-spiatoreEntrateEdUscite.observe(sottotitolo1);
-schermoSotto.appendChild(sottotitolo1);
-creaOmbraColorataAlPassaggio(sottotitolo2);
-spiatoreEntrateEdUscite.observe(sottotitolo2);
-schermoSotto.appendChild(sottotitolo2);
+dividiTestoInPiùParagrafi("h2", "sottotitolo_index", Traduttore.traduci("subtitle_1"), 
+  "attivo nel modding di minecraft,","e conoscente dei linguaggi Java, C# e JavaScript");
+export function dividiTestoInPiùParagrafi(tipoDiTesto, classeBase, ...testi) {
+  let variabile = 1;
+  testi.forEach((testo) => {
+      const testoElement = document.createElement(tipoDiTesto);
+      testoElement.classList.add(classeBase+"_"+variabile);
+      testoElement.textContent = testo;
+      creaOmbraColorataAlPassaggio(testoElement);
+      spiatoreEntrateEdUscite.observe(testoElement);
+      schermoSotto.appendChild(testoElement);
+      variabile++;
+
+  });
+}
+
+//Cose di fine pagina: "Sito scritto interamente in html, css e javascript,
+// e nessuna pressa di parole è stata sfruttata!
