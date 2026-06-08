@@ -183,4 +183,21 @@ body {
   white-space:pre;
   z-index: 4;
 }
-
+.title_index{
+    position:absolute;
+    left:5%;
+    top:5%;
+    color:white;
+}
+.sottotitolo_index_1{
+  position:absolute;
+  left:6%;
+  top:15%;
+  color:gainsboro;
+}
+.sottotitolo_index_2{
+  position:absolute;
+  left:6%;
+  top:20%;
+  color:gainsboro;
+}

@@ -31,6 +31,11 @@ Instanze.creaMenu(
     document.querySelector(".schermo_sotto").appendChild(error);
     document.querySelector(".download_file").style.display = "none";
   } else {
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.type = "image/svg+xml";
+    icon.href = progetto.getImgPath();
+    document.head.appendChild(icon);
     const descrizione = document.querySelector(".description_project");
     document.title = "OrliSite - Progetto " + progetto.getTitle();
     const testo = await progetto.getDescription();
