@@ -85,88 +85,115 @@ Instanze.creaMenu(
     imgProject2.width = "150";
     imgProject2.height = "150";
     document.querySelector(".schermo_sotto").appendChild(imgProject2);
+    //GALLERIA
+    if (progetto.hasGallery()) {
+      const galleryButton = document.createElement("button");
+      galleryButton.classList.add("gallery_button");
+      galleryButton.textContent = "Galleria";
+      document.querySelector(".schermo_sotto").appendChild(galleryButton);
+      let giapremuto = false;
+      galleryButton.addEventListener("click", function () {
+        console.log("test superato");
+        giapremuto = !giapremuto;
+        if (giapremuto) {
+          console.log("test 2 superato");
+          galleryButton.textContent = "Descrizione";
+          descrizione.style.display = "none";
+          document.querySelector(".sfondo_descrizione").style.display = "none";
+          const immagini = progetto.getGallery();
+          console.log(immagini);
+          console.log(immagini[0]);
+          let indexCorrente = 0;
+          let immagineCorrente = immagini[indexCorrente];
+          const imgCorrente = document.createElement("img");
+          imgCorrente.classList.add("img_corrente");
+          imgCorrente.src = immagineCorrente;
+          imgCorrente.style.position = "absolute";
+          imgCorrente.style.left = "2%";
+          imgCorrente.style.top = "35%";
+          imgCorrente.style.zIndex = "10";
+          document.querySelector(".schermo_sotto").appendChild(imgCorrente);
+          const buttonDestra = document.createElement("button");
+          const buttonSinistra = document.createElement("button");
+          const imgDestra = document.createElement("img");
+          const imgSinistra = document.createElement("img");
+          buttonDestra.style.position = "absolute";
+          buttonSinistra.style.position = "absolute";
+          buttonDestra.style.zIndex = "10";
+          buttonSinistra.style.zIndex = "10";
+          buttonDestra.classList.add("buttonDestra");
+          buttonSinistra.classList.add("buttonSinistra");
+          imgDestra.src = "textures/freccia_pagina.svg";
+          imgSinistra.src = "textures/freccia_pagina.svg";
+          imgSinistra.style.transform = "rotate(180deg)";
+          buttonDestra.style.height = "50px";
+          buttonDestra.style.width = "50px";
+          buttonSinistra.style.height = "50px";
+          buttonSinistra.style.width = "50px";
+          buttonDestra.style.outline = "none";
+          buttonSinistra.style.outline = "none";
+          buttonDestra.style.backgroundColor = "transparent";
+          buttonSinistra.style.backgroundColor = "transparent";
+          imgCorrente.onload = function () {
+            console.log("img loadata");
+            buttonDestra.style.top =
+              imgCorrente.offsetHeight + 20 + imgCorrente.offsetTop + "px";
+            buttonSinistra.style.top =
+              imgCorrente.offsetHeight + 20 + imgCorrente.offsetTop + "px";
+          };
+          buttonDestra.style.left = "45%";
+          buttonSinistra.style.left = "35%";
+          buttonDestra.style.border = "none";
+          buttonSinistra.style.border = "none";
+          buttonDestra.appendChild(imgDestra);
+          buttonSinistra.appendChild(imgSinistra);
+          imgDestra.width = 50;
+          imgSinistra.width = 50;
+          imgDestra.height = 50;
+          imgSinistra.height = 50;
+          imgSinistra.style.top = "-3px";
 
-    const galleryButton = document.createElement("button");
-    galleryButton.classList.add("gallery_button");
-    galleryButton.textContent = "Galleria";
-    document.querySelector(".schermo_sotto").appendChild(galleryButton);
-    let giapremuto = false;
-    galleryButton.addEventListener("click", function () {
-      console.log("test superato");
-      giapremuto = !giapremuto;
-      if (giapremuto) {
-        console.log("test 2 superato");
-        galleryButton.textContent = "Descrizione";
-        descrizione.style.display = "none";
-        document.querySelector(".sfondo_descrizione").style.display = "none";
-        const immagini = progetto.getGallery();
-        console.log(immagini);
-        console.log(immagini[0]);
-        let indexCorrente = 0;
-        let immagineCorrente = immagini[indexCorrente];
-        const imgCorrente = document.createElement("img");
-        imgCorrente.classList.add("img_corrente")
-        imgCorrente.src = immagineCorrente;
-        imgCorrente.style.position = "absolute";
-        imgCorrente.style.left = "2%";
-        imgCorrente.style.top = "35%";
-        imgCorrente.style.zIndex = "10";
-        document.querySelector(".schermo_sotto").appendChild(imgCorrente);
-        const buttonDestra = document.createElement("button");
-        const buttonSinistra = document.createElement("button");
-        const imgDestra = document.createElement("img");
-        const imgSinistra = document.createElement("img");
-        buttonDestra.style.position = "absolute";
-        buttonSinistra.style.position = "absolute";
-        buttonDestra.style.zIndex = "10";
-        buttonSinistra.style.zIndex = "10";
-        buttonDestra.classList.add("buttonDestra");
-        buttonSinistra.classList.add("buttonSinistra");
-        imgDestra.src = "textures/freccia_pagina.svg";
-        imgSinistra.src = "textures/freccia_pagina.svg";
-        imgSinistra.style.transform = "rotate(180deg)";
-        buttonDestra.style.height = "50px";
-        buttonDestra.style.width = "50px";
-        buttonSinistra.style.height = "50px";
-        buttonSinistra.style.width = "50px";
-        buttonDestra.style.outline = "none";
-        buttonSinistra.style.outline = "none";
-        buttonDestra.style.backgroundColor = "transparent";
-        buttonSinistra.style.backgroundColor = "transparent";
-        buttonDestra.style.top = "80%";
-        buttonSinistra.style.top = "80%";
-        buttonDestra.style.left = "55%";
-        buttonSinistra.style.left = "45%";
-        buttonDestra.appendChild(imgDestra);
-        buttonSinistra.appendChild(imgSinistra);
-        imgDestra.width = buttonDestra.style.width;
-        imgSinistra.width = buttonSinistra.style.width;
-        imgDestra.height = buttonDestra.style.height;
-        imgSinistra.height = buttonSinistra.style.height;
-        document.querySelector(".schermo_sotto").appendChild(buttonDestra);
-        document.querySelector(".schermo_sotto").appendChild(buttonSinistra);
-        buttonSinistra.addEventListener("click", function () {
-          if (indexCorrente - 1 >= 0) {
-            indexCorrente--;
-            immagineCorrente = immagini[indexCorrente];
-            imgCorrente.src = immagineCorrente;
-          }
-        });
-        buttonDestra.addEventListener("click", function () {
-          if (indexCorrente + 1 < immagini.length) {
-            indexCorrente++;
-            immagineCorrente = immagini[indexCorrente];
-            imgCorrente.src = immagineCorrente;
-          }
-        });
-      } else {
-        galleryButton.textContent = "Galleria";
-        document.querySelector(".buttonDestra").remove();
-        document.querySelector(".buttonSinistra").remove();
-        document.querySelector(".img_corrente").remove();
-        descrizione.style.display = "";
-        document.querySelector(".sfondo_descrizione").style.display = "";
-      }
-    });
+          document.querySelector(".schermo_sotto").appendChild(buttonDestra);
+          document.querySelector(".schermo_sotto").appendChild(buttonSinistra);
+          buttonSinistra.addEventListener("click", function () {
+            if (indexCorrente - 1 >= 0) {
+              indexCorrente--;
+              immagineCorrente = immagini[indexCorrente];
+              imgCorrente.src = immagineCorrente;
+            }
+          });
+          buttonDestra.addEventListener("click", function () {
+            if (indexCorrente + 1 < immagini.length) {
+              indexCorrente++;
+              immagineCorrente = immagini[indexCorrente];
+              imgCorrente.src = immagineCorrente;
+            }
+          });
+          document.addEventListener("keydown", function(e) {
+            if(e.key === "ArrowRight") {
+              if (indexCorrente + 1 < immagini.length) {
+              indexCorrente++;
+              immagineCorrente = immagini[indexCorrente];
+              imgCorrente.src = immagineCorrente;
+            }
+            }else if(e.key === "ArrowLeft") {
+              if (indexCorrente - 1 >= 0) {
+              indexCorrente--;
+              immagineCorrente = immagini[indexCorrente];
+              imgCorrente.src = immagineCorrente;
+            }
+            }
+          });
+        } else {
+          galleryButton.textContent = "Galleria";
+          document.querySelector(".buttonDestra").remove();
+          document.querySelector(".buttonSinistra").remove();
+          document.querySelector(".img_corrente").remove();
+          descrizione.style.display = "";
+          document.querySelector(".sfondo_descrizione").style.display = "";
+        }
+      });
+      
+    }
   }
 })();

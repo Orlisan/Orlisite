@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .schermo_sopra {
@@ -99,7 +100,7 @@ body {
     font-family: 'Monocraft', sans-serif;
     color:gray;
     margin:0px;
-    padding:0px;
+    padding-left:6px;
     font-size:20px;
 }
 @font-face{

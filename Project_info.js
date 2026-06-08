@@ -7,14 +7,16 @@ export class Project_info{
     #jarPath;
     #id;
     #gallery;
-    constructor(pathImg, title, summary, id, pathDescription, jarPath, gallery) {
+    #hasGallery;
+    constructor(pathImg, title, summary, id, pathDescription, jarPath, hasGallery, gallery, ) {
         this.#pathImg = pathImg;
         this.#summary = summary;
         this.#title = title;
         this.#pathDescription = pathDescription;
         this.#jarPath = jarPath;
         this.#id = id;
-        this.#gallery = gallery
+        this.#gallery = gallery;
+        this.#hasGallery = hasGallery;
     }
     getImgPath(){
         return this.#pathImg;
@@ -43,5 +45,8 @@ export class Project_info{
     }
     getGallery() {
         return this.#gallery;
+    }
+    hasGallery() {
+        return this.#hasGallery;
     }
 }
