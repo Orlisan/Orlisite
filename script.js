@@ -62,10 +62,10 @@ export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllI
       spans.forEach((span) => {
         const boxSpan = span.getBoundingClientRect();
         const dentroCircle =
-          boxSpan.top >= boxCircle.top-boxSpan.height &&
-          boxSpan.bottom <= boxCircle.bottom+boxSpan.height &&
-          boxSpan.left >= boxCircle.left-boxSpan.width &&
-          boxSpan.right <= boxCircle.right+boxSpan.width;
+          boxSpan.top >= boxCircle.top - boxSpan.height &&
+          boxSpan.bottom <= boxCircle.bottom + boxSpan.height &&
+          boxSpan.left >= boxCircle.left - boxSpan.width &&
+          boxSpan.right <= boxCircle.right + boxSpan.width;
         const boxDiv = div.getBoundingClientRect();
         const dentroDiv =
           boxSpan.top >= boxDiv.top &&
@@ -73,14 +73,57 @@ export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllI
           boxSpan.left >= boxDiv.left &&
           boxSpan.right <= boxDiv.right;
         if (dentroCircle && dentroDiv) {
+          if (span.hasAttribute("secret_letter")) {
+            span.textContent = span.getAttribute("secret_letter");
+          }
           span.style.color = "white";
           span.style.zIndex = darkCircle.style.zIndex + 1;
         } else if (dentroDiv) {
+          if (span.hasAttribute("normal_letter")) {
+            span.textContent = span.getAttribute("normal_letter");
+          }
           span.style.color = "black";
         }
       });
     }
   }, 10);
+}
+export function dividiInSpanEBastaOForseNo(paragrafo, mappaFrasiTopSecret) {
+  const veroTextContent = paragrafo.textContent;
+  paragrafo.textContent = "";
+  const arrayIndexsDaSostituire = {};
+  for (const [fraseDaSostituire, fraseSecret] of Object.entries(
+    mappaFrasiTopSecret,
+  )) {
+    if (veroTextContent.includes(fraseDaSostituire)) {
+      const indice = veroTextContent.indexOf(fraseDaSostituire);
+      [...fraseDaSostituire].forEach((char) => {
+        const index = indice + fraseDaSostituire.indexOf(char);
+        const letteraDaSostituire = fraseSecret.charAt(
+          fraseDaSostituire.indexOf(char),
+        );
+        arrayIndexsDaSostituire[index] = letteraDaSostituire;
+      });
+    }
+  }
+  for (let i = 0; i < veroTextContent.length; i++) {
+    const spanLettera = document.createElement("span");
+    spanLettera.style.position = "relative";
+    spanLettera.textContent = veroTextContent[i];
+    spanLettera.style.display = "inline-block";
+    spanLettera.style.zIndex = "1";
+    if (spanLettera.textContent === " ") {
+      spanLettera.innerHTML = "&nbsp";
+    }
+    if (i in arrayIndexsDaSostituire) {
+      spanLettera.setAttribute(
+        "secret_letter",
+        arrayIndexsDaSostituire[i]
+      );
+      spanLettera.setAttribute("normal_letter", spanLettera.textContent);
+    }
+    paragrafo.appendChild(spanLettera);
+  }
 }
 export function dividiInSpanEBasta(paragrafo) {
   const veroTextContent = paragrafo.textContent;
@@ -200,8 +243,8 @@ divProva.style.width = "60%";
 divProva.style.height = "30%";
 const scrittaProva = document.createElement("h3");
 scrittaProva.style.color = "black";
-scrittaProva.textContent = "provaprovaprovaprovaprovaprovaprova";
-dividiInSpanEBasta(scrittaProva);
+scrittaProva.textContent = "michiamoorlandoemichiamoancheorlisan";
+dividiInSpanEBastaOForseNo(scrittaProva, {"chiamo": "mangio", "chiamoa":"mangioa"});
 faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
   divProva,
 );
