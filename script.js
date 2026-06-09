@@ -89,7 +89,7 @@ function fun_007(observedElements) {
 }
 
 dividiTestoInPiùParagrafi("h2", "sottotitolo_index", Traduttore.traduci("subtitle_1"), 
-  "attivo nel modding di minecraft,","e conoscente dei linguaggi Java, C# e JavaScript");
+  Traduttore.traduci("subtitle_2"),Traduttore.traduci("subtitle_3"));
 export function dividiTestoInPiùParagrafi(tipoDiTesto, classeBase, ...testi) {
   let variabile = 1;
   testi.forEach((testo) => {

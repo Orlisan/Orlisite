@@ -203,3 +203,25 @@ body {
 .sottotitolo_index_3{
   top:25%;
 }
+.language_button{
+  position: absolute;
+  left:1%;
+  top:25%;
+  width: 60px;
+  height:40px;
+  z-index: 10;
+  cursor:pointer;
+}
+.tooltip_lingua{
+  position:absolute;
+  left:-390px;
+  top: 60%;
+  width: 400px;
+  height: 30px;
+  font-size: 16px;
+  font-family: 'Monocraft', sans-serif;
+  color:greenyellow;
+  background-color: transparent;
+  transition: transform 1s ease;
+  z-index: 10;
+}

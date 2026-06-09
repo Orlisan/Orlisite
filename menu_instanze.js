@@ -1,7 +1,7 @@
 export function creaLogo() {
   const orlisite = document.createElement("button");
   orlisite.style.position = "absolute";
-  orlisite.style.left = "0.5%";
+  orlisite.style.left = "2%";
   orlisite.style.top = "5%";
   orlisite.style.width = "20%";
   orlisite.style.height = "70%";

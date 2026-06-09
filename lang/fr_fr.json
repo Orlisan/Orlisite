@@ -1,4 +1,7 @@
 {
-  "title_homepage": "Benvenuti al sito ufficiale di Orlisan!! (Ma in francese)",
-  "subtitle_1": "Ciao! mi chiamo online Orlisan, sono un giovane sviluppatore (Ma in francese)"
+    "title_homepage": "Bienvenue sur le site officiel d'Orlisan !!",
+    "subtitle_1": "Salut ! Je m'appelle Orlisan en ligne, je suis un jeune développeur",
+    "subtitle_2": "actif dans le modding de Minecraft,",
+    "subtitle_3": "et je connais les langages Java, C# et JavaScript",
+    "tooltip_languages": "TG: Changer | TD: Appliquer"
 }
