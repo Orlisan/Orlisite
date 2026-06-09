@@ -16,7 +16,7 @@ export function creaLogo() {
   orlisite.style.border = "none";
   orlisite.style.outline = "none";
   document.querySelector(".schermo_sopra").appendChild(orlisite);
-  orlisite.addEventListener("click", function() {
+  orlisite.addEventListener("click", function () {
     console.log("Cliccato");
     const url = new URL(window.location.origin);
     url.searchParams.set("lang", Traduttore.current_name);
@@ -26,37 +26,38 @@ export function creaLogo() {
 export function creaBarraDiRicerca() {
   const barraDiRicerca = document.querySelector(".barra_di_ricerca");
   barraDiRicerca.placeholder = Traduttore.traduci("searchbar_placeholder");
-barraDiRicerca.addEventListener("mouseenter", function () {
-  barraDiRicerca.style.borderColor = "red";
-});
-barraDiRicerca.addEventListener("mouseleave", function () {
-  barraDiRicerca.style.borderColor = "gray";
-});
-document.addEventListener("keydown", function (e) {
-  if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
-    const valuta = barraDiRicerca.value;
-    if (valuta != null && valuta.trim() != "") {
-      barraDiRicerca.value = "";
-      window.location.href = "search.html?q=" + valuta+"&lang="+Traduttore.current_name;
+  barraDiRicerca.addEventListener("mouseenter", function () {
+    barraDiRicerca.style.borderColor = "red";
+  });
+  barraDiRicerca.addEventListener("mouseleave", function () {
+    barraDiRicerca.style.borderColor = "gray";
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key == "Enter" && document.activeElement == barraDiRicerca) {
+      const valuta = barraDiRicerca.value;
+      if (valuta != null && valuta.trim() != "") {
+        barraDiRicerca.value = "";
+        window.location.href =
+          "search.html?q=" + valuta + "&lang=" + Traduttore.current_name;
+      }
     }
-  }
-});
+  });
 }
 export function creaMenu(Progetti, menuProgetto, menu_class, menu_name) {
   const modsDiMinecraft = document.createElement("div");
   const schermoSopra = document.querySelector(".schermo_sopra");
   schermoSopra.appendChild(modsDiMinecraft);
   modsDiMinecraft.classList.add(menu_class);
-  modsDiMinecraft.textContent = "  "+menu_name;
+  modsDiMinecraft.textContent = "  " + menu_name;
   let gradi = 0;
   let isInside = false;
   const menu = document.querySelector(menuProgetto);
   const freccia = document.createElement("img");
-  freccia.classList.add("freccia_"+menuProgetto.slice(1));
+  freccia.classList.add("freccia_" + menuProgetto.slice(1));
   freccia.src = "textures/freccia_pixel.svg";
   freccia.style.transform = "scale(2x)";
   modsDiMinecraft.appendChild(freccia);
-  inizializzaMenu(Progetti , menuProgetto);
+  inizializzaMenu(Progetti, menuProgetto);
   animaFreccia();
   modsDiMinecraft.addEventListener("mouseenter", function () {
     isInside = true;
@@ -160,9 +161,9 @@ export function inizializzaMenu(Progetti, menuProgetto) {
   }
 }
 export function instanziaBottoni(arrayMods, menuProgetto) {
-  const oldMod1 = document.querySelector(menuProgetto+"_mod_1");
-  const oldMod2 = document.querySelector(menuProgetto+"_mod_2");
-  const oldMod3 = document.querySelector(menuProgetto+"_mod_3");
+  const oldMod1 = document.querySelector(menuProgetto + "_mod_1");
+  const oldMod2 = document.querySelector(menuProgetto + "_mod_2");
+  const oldMod3 = document.querySelector(menuProgetto + "_mod_3");
   if (oldMod1) {
     oldMod1.remove();
   }
@@ -177,14 +178,18 @@ export function instanziaBottoni(arrayMods, menuProgetto) {
   arrayMods.forEach((mod) => {
     numBott++;
     const modmenu = document.createElement("button");
-    modmenu.classList.add(menuProgetto.slice(1)+"_mod_" + numBott);
+    modmenu.classList.add(menuProgetto.slice(1) + "_mod_" + numBott);
     modmenu.style.position = "absolute";
     modmenu.style.left = "10px";
     modmenu.style.top = current_spazio + "px";
     modmenu.style.width = "280px";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      window.location.href = "project-page.html?id=" + mod.getId()+"&lang="+Traduttore.current_name;
+      window.location.href =
+        "project-page.html?id=" +
+        mod.getId() +
+        "&lang=" +
+        Traduttore.current_name;
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

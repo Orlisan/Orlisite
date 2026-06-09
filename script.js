@@ -26,7 +26,77 @@ title_project.textContent = Traduttore.traduci("title_homepage");
 creaOmbraColorataAlPassaggio(title_project);
 document.querySelector(".schermo_sotto").appendChild(title_project);
 spiatoreEntrateEdUscite.observe(title_project);
-
+const mouse = { x: 0, y: 0 };
+document.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
+  div,
+) {
+  let isInside = false;
+  div.addEventListener("mouseenter", function () {
+    isInside = true;
+  });
+  div.addEventListener("mouseleave", function () {
+    isInside = false;
+  });
+  const anim = setInterval(function () {
+    if (document.querySelector(".dark_circle") !== null) {
+      document.querySelector(".dark_circle").remove();
+    }
+    if (isInside) {
+      const darkCircle = document.createElement("div");
+      darkCircle.classList.add("dark_circle");
+      darkCircle.style.backgroundColor = "black";
+      darkCircle.style.position = "fixed";
+      darkCircle.style.borderRadius = "50%";
+      darkCircle.style.width = "30px";
+      darkCircle.style.height = "30px";
+      darkCircle.style.left = mouse.x - 15 + "px";
+      darkCircle.style.top = mouse.y - 15 + "px";
+      div.appendChild(darkCircle);
+      darkCircle.style.zIndex = div.style.zIndex + 1;
+      const boxCircle = darkCircle.getBoundingClientRect();
+      const spans = document.querySelectorAll("span");
+      spans.forEach((span) => {
+        const boxSpan = span.getBoundingClientRect();
+        const dentroCircle =
+          boxSpan.top >= boxCircle.top-boxSpan.height &&
+          boxSpan.bottom <= boxCircle.bottom+boxSpan.height &&
+          boxSpan.left >= boxCircle.left-boxSpan.width &&
+          boxSpan.right <= boxCircle.right+boxSpan.width;
+        const boxDiv = div.getBoundingClientRect();
+        const dentroDiv =
+          boxSpan.top >= boxDiv.top &&
+          boxSpan.bottom <= boxDiv.bottom &&
+          boxSpan.left >= boxDiv.left &&
+          boxSpan.right <= boxDiv.right;
+        if (dentroCircle && dentroDiv) {
+          span.style.color = "white";
+          span.style.zIndex = darkCircle.style.zIndex + 1;
+        } else if (dentroDiv) {
+          span.style.color = "black";
+        }
+      });
+    }
+  }, 10);
+}
+export function dividiInSpanEBasta(paragrafo) {
+  const veroTextContent = paragrafo.textContent;
+  paragrafo.textContent = "";
+  for (let i = 0; i < veroTextContent.length; i++) {
+    const spanLettera = document.createElement("span");
+    spanLettera.style.position = "relative";
+    spanLettera.textContent = veroTextContent[i];
+    spanLettera.style.display = "inline-block";
+    spanLettera.style.zIndex = "1";
+    if (spanLettera.textContent === " ") {
+      spanLettera.innerHTML = "&nbsp";
+    }
+    paragrafo.appendChild(spanLettera);
+  }
+}
 export function creaOmbraColorataAlPassaggio(paragrafo) {
   const veroTextContent = paragrafo.textContent;
   paragrafo.textContent = "";
@@ -39,8 +109,12 @@ export function creaOmbraColorataAlPassaggio(paragrafo) {
       spanLettera.innerHTML = "&nbsp";
     }
     spanLettera.addEventListener("mouseenter", function () {
-      const left = spanLettera.getBoundingClientRect().left - document.querySelector(".schermo_sotto").getBoundingClientRect().left;
-      const top = spanLettera.getBoundingClientRect().top - document.querySelector(".schermo_sotto").getBoundingClientRect().top;
+      const left =
+        spanLettera.getBoundingClientRect().left -
+        document.querySelector(".schermo_sotto").getBoundingClientRect().left;
+      const top =
+        spanLettera.getBoundingClientRect().top -
+        document.querySelector(".schermo_sotto").getBoundingClientRect().top;
       const ombraColorata = spanLettera.cloneNode(true);
       ombraColorata.classList.add("ombra_colorata");
       ombraColorata.style.position = "absolute";
@@ -83,26 +157,55 @@ function fun_007(observedElements) {
         elemento.style.transform = "translateX(-20px)";
       }
     } else {
-       elemento.style.transform = "translateX(0px)";
+      elemento.style.transform = "translateX(0px)";
     }
   });
 }
 
-dividiTestoInPiùParagrafi("h2", "sottotitolo_index", Traduttore.traduci("subtitle_1"), 
-  Traduttore.traduci("subtitle_2"),Traduttore.traduci("subtitle_3"));
+dividiTestoInPiùParagrafi(
+  "h2",
+  "sottotitolo_index",
+  Traduttore.traduci("subtitle_1"),
+  Traduttore.traduci("subtitle_2"),
+  Traduttore.traduci("subtitle_3"),
+);
 export function dividiTestoInPiùParagrafi(tipoDiTesto, classeBase, ...testi) {
   let variabile = 1;
   testi.forEach((testo) => {
-      const testoElement = document.createElement(tipoDiTesto);
-      testoElement.classList.add(classeBase+"_"+variabile);
-      testoElement.textContent = testo;
-      creaOmbraColorataAlPassaggio(testoElement);
-      spiatoreEntrateEdUscite.observe(testoElement);
-      schermoSotto.appendChild(testoElement);
-      variabile++;
-
+    const testoElement = document.createElement(tipoDiTesto);
+    testoElement.classList.add(classeBase + "_" + variabile);
+    testoElement.textContent = testo;
+    creaOmbraColorataAlPassaggio(testoElement);
+    spiatoreEntrateEdUscite.observe(testoElement);
+    schermoSotto.appendChild(testoElement);
+    variabile++;
   });
 }
+const chiSono = document.querySelector(".chi_sono");
+chiSono.textContent = Traduttore.traduci("chi_sono_title");
+spiatoreEntrateEdUscite.observe(chiSono);
+creaOmbraColorataAlPassaggio(chiSono);
+spiatoreEntrateEdUscite.observe(document.querySelector(".inizio_sez_chi_sono"));
+spiatoreEntrateEdUscite.observe(
+  document.querySelector(".ombra_inizio_sez_chi_sono"),
+);
 
+const divProva = document.createElement("div");
+divProva.style.position = "absolute";
+divProva.style.backgroundColor = "white";
+divProva.style.left = "6%";
+divProva.style.top = "50%";
+divProva.style.zIndex = "0";
+divProva.style.width = "60%";
+divProva.style.height = "30%";
+const scrittaProva = document.createElement("h3");
+scrittaProva.style.color = "black";
+scrittaProva.textContent = "provaprovaprovaprovaprovaprovaprova";
+dividiInSpanEBasta(scrittaProva);
+faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
+  divProva,
+);
+divProva.appendChild(scrittaProva);
+schermoSotto.appendChild(divProva);
 //Cose di fine pagina: "Sito scritto interamente in html, css e javascript,
 // e nessuna pressa di parole è stata sfruttata!

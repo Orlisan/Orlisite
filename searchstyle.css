@@ -1,10 +1,10 @@
-.nome_ricerca{
-  position:absolute;
-  left:25%;
-  top:10%;
+.nome_ricerca {
+  position: absolute;
+  left: 25%;
+  top: 10%;
   width: 600px;
   height: 80%;
-  font-family:'Monocraft', sans-serif;
+  font-family: "Monocraft", sans-serif;
   font-size: xx-large;
   font-weight: bold;
 }

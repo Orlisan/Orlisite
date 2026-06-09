@@ -118,7 +118,11 @@ function instanziaBottoni(arrayProgetti) {
     modmenu.style.width = "80%";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      window.location.href = "project-page.html?id=" + mod.getId()+"&lang="+Traduttore.current_name;
+      window.location.href =
+        "project-page.html?id=" +
+        mod.getId() +
+        "&lang=" +
+        Traduttore.current_name;
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

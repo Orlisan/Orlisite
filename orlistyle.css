@@ -25,6 +25,7 @@ body {
   position: relative;
   background-color: black;
   transform-origin: top left;
+  font-family: 'Monocraft', sans-serif;
 }
 .primo_bottone {
   position: absolute;
@@ -71,172 +72,183 @@ body {
   font-size: 40px;
 }
 .separatore_schermi {
-    position:absolute;
-    left:0px;
-    top:80%;
-    width:100%;
-    height: 15%;
-    background-color: orange;
+  position: absolute;
+  left: 0px;
+  top: 80%;
+  width: 100%;
+  height: 15%;
+  background-color: orange;
 }
 .ombra_separatore_schermi {
-    position:absolute;
-    left:0px;
-    top:95%;
-    width:100%;
-    height: 5%;
-    background-color: rgb(255, 60, 0);
+  position: absolute;
+  left: 0px;
+  top: 95%;
+  width: 100%;
+  height: 5%;
+  background-color: rgb(255, 60, 0);
 }
-.barra_di_ricerca{
-    position:absolute;
-    left:75%;
-    top:20%;
-    width: 300px;
-    height:40%;
-    background-color: Black;
-    border:6px solid gray;
-    border-radius: 0px;
-    border-color:gray;
-    outline: none;
-    font-family: 'Monocraft', sans-serif;
-    color:gray;
-    margin:0px;
-    padding-left:6px;
-    font-size:20px;
+.barra_di_ricerca {
+  position: absolute;
+  left: 75%;
+  top: 20%;
+  width: 300px;
+  height: 40%;
+  background-color: Black;
+  border: 6px solid gray;
+  border-radius: 0px;
+  border-color: gray;
+  outline: none;
+  font-family: "Monocraft", sans-serif;
+  color: gray;
+  margin: 0px;
+  padding-left: 6px;
+  font-size: 20px;
 }
-@font-face{
-  font-family: 'Monocraft';
-  src:url('fonts/Monocraft.ttc');
+@font-face {
+  font-family: "Monocraft";
+  src: url("fonts/Monocraft.ttc");
 }
-.mods_minecraft{
-  position:absolute;
-  left:20%;
+.mods_minecraft {
+  position: absolute;
+  left: 20%;
   top: 20%;
   width: 300px;
   height: 40px;
   background-color: gray;
-  border:6px solid orange;
-  border-color:orange;
+  border: 6px solid orange;
+  border-color: orange;
   border-radius: 4px;
-  font-family:'Monocraft', sans-serif;
+  font-family: "Monocraft", sans-serif;
   font-weight: bold;
-  margin:0px;
-  padding-left:12px;
-  padding-top:17px;
-  text-align:center;
+  margin: 0px;
+  padding-left: 12px;
+  padding-top: 17px;
+  text-align: center;
   font-size: 25px;
-  color:orangered;
-  white-space:pre;
+  color: orangered;
+  white-space: pre;
   z-index: 4;
 }
-.freccia_menu_mods, .freccia_menu_altri_progetti{
-  position:absolute;
-  left:-15px;
-  top:40%;
-  height:25%;
-  width:25%;
+.freccia_menu_mods,
+.freccia_menu_altri_progetti {
+  position: absolute;
+  left: -15px;
+  top: 40%;
+  height: 25%;
+  width: 25%;
 }
-.spazio_nero_per_far_slidare_il_menu{
+.spazio_nero_per_far_slidare_il_menu {
   background-color: black;
-  position:absolute;
-  left:15%;
+  position: absolute;
+  left: 15%;
   top: 0%;
   width: 100%;
-  height:20%;
+  height: 20%;
   z-index: 4;
 }
-.menu_mods{
+.menu_mods {
   position: absolute;
   z-index: 3;
   background-color: rgb(49, 22, 0);
-  left:21%;
-  top:-270px; 
+  left: 21%;
+  top: -270px;
   width: 300px;
   height: 370px;
 }
-.menu_altri_progetti{
+.menu_altri_progetti {
   position: absolute;
   z-index: 3;
   background-color: rgb(49, 22, 0);
-  left:50%;
-  top:-270px;
+  left: 50%;
+  top: -270px;
   width: 300px;
   height: 370px;
 }
-.altri_progetti{
-  position:absolute;
-  left:49%;
+.altri_progetti {
+  position: absolute;
+  left: 49%;
   top: 20%;
   width: 300px;
   height: 40px;
   background-color: gray;
-  border:6px solid orange;
-  border-color:orange;
+  border: 6px solid orange;
+  border-color: orange;
   border-radius: 4px;
-  font-family:'Monocraft', sans-serif;
+  font-family: "Monocraft", sans-serif;
   font-weight: bold;
-  margin:0px;
-  padding-left:12px;
-  padding-top:17px;
-  text-align:center;
+  margin: 0px;
+  padding-left: 12px;
+  padding-top: 17px;
+  text-align: center;
   font-size: 25px;
-  color:orangered;
-  white-space:pre;
+  color: orangered;
+  white-space: pre;
   z-index: 4;
 }
-.title_index{
-    position:absolute;
-    left:5%;
-    top:5%;
-    color:white;
-}
-.sottotitolo_index_1, .sottotitolo_index_2, .sottotitolo_index_3 {
+.title_index {
   position: absolute;
-  color:gainsboro;
-  left:6%;
+  left: 5%;
+  top: 5%;
+  color: white;
 }
-.sottotitolo_index_1{
-  top:15%;
+.sottotitolo_index_1,
+.sottotitolo_index_2,
+.sottotitolo_index_3 {
+  position: absolute;
+  color: gainsboro;
+  left: 6%;
 }
-.sottotitolo_index_2{
-  top:20%;
+.sottotitolo_index_1 {
+  top: 15%;
 }
-.sottotitolo_index_3{
-  top:25%;
+.sottotitolo_index_2 {
+  top: 20%;
 }
-.inizio_sez_chi_sono{
-  position:absolute;
-  left:7%;
-  top:40%;
+.sottotitolo_index_3 {
+  top: 25%;
+}
+.inizio_sez_chi_sono {
+  position: absolute;
+  left: 7%;
+  top: 40%;
   width: 80%;
   height: 2.5%;
   background-color: green;
 }
-.ombra_inizio_sez_chi_sono{
-  position:absolute;
-  left:10%;
-  top:100%;
+.ombra_inizio_sez_chi_sono {
+  position: absolute;
+  left: 10%;
+  top: 100%;
   width: 80%;
   height: 30%;
   background-color: greenyellow;
 }
-.language_button{
-  position: absolute;
-  left:1%;
-  top:25%;
-  width: 60px;
-  height:40px;
-  z-index: 10;
-  cursor:pointer;
-}
-.tooltip_lingua{
+.chi_sono{
   position:absolute;
-  left:-390px;
+  left: 6%;
+  top: 50%;
+  width: 40%;
+  height: 20%;
+  color:rgb(48, 119, 0);
+}
+.language_button {
+  position: absolute;
+  left: 1%;
+  top: 25%;
+  width: 60px;
+  height: 40px;
+  z-index: 10;
+  cursor: pointer;
+}
+.tooltip_lingua {
+  position: absolute;
+  left: -390px;
   top: 60%;
   width: 400px;
   height: 30px;
   font-size: 16px;
-  font-family: 'Monocraft', sans-serif;
-  color:greenyellow;
+  font-family: "Monocraft", sans-serif;
+  color: greenyellow;
   background-color: transparent;
   transition: transform 1s ease;
   z-index: 10;
