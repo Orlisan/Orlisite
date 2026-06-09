@@ -34,18 +34,16 @@ document.addEventListener("mousemove", (e) => {
 export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
   div,
 ) {
-  let isInside = false;
-  div.addEventListener("mouseenter", function () {
-    isInside = true;
-  });
+  
   div.addEventListener("mouseleave", function () {
-    isInside = false;
-  });
-  const anim = setInterval(function () {
     if (document.querySelector(".dark_circle") !== null) {
       document.querySelector(".dark_circle").remove();
     }
-    if (isInside) {
+  });
+  div.addEventListener("mousemove", function () {
+    if (document.querySelector(".dark_circle") !== null) {
+      document.querySelector(".dark_circle").remove();
+    }
       const darkCircle = document.createElement("div");
       darkCircle.classList.add("dark_circle");
       darkCircle.style.backgroundColor = "black";
@@ -85,8 +83,7 @@ export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllI
           span.style.color = "black";
         }
       });
-    }
-  }, 10);
+  });
 }
 export function dividiInSpanEBastaOForseNo(paragrafo, mappaFrasiTopSecret) {
   const veroTextContent = paragrafo.textContent;
