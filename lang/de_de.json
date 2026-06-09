@@ -12,7 +12,12 @@
   "description_unstablesmp": "descrizioni/unstable_smp_de.md",
   "summary_javaita": "Java auf Italienisch!",
   "description_javaita": "descrizioni/javaita_de.md",
-  "searchbar_placeholder":"Etwas suchen...",
+  "searchbar_placeholder": "Etwas suchen...",
   "menu_mods": "Minecraft-Mods",
-  "menu_otherprojects": "Weitere Projekte"
+  "menu_otherprojects": "Weitere Projekte",
+  "gallery_button": "Galerie",
+  "description_button": "Beschreibung",
+  "download_file": "Herunterladen",
+  "search_results":"Suchergebnisse für: ",
+  "search_title": "Suche"
 }

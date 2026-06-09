@@ -6,11 +6,13 @@ const parametri = new URLSearchParams(window.location.search);
 
 const ricerca = parametri.get("q");
 const progettiTrovati = [];
-document.title = "Ricerca - " + ricerca;
+document.title = Traduttore.traduci("search_title") + " - " + ricerca;
 document.querySelector(".nome_ricerca").textContent =
-  "Risultati di ricerca di: " + ricerca;
+  Traduttore.traduci("search_results") + ricerca;
 Contents.progetti.forEach((progetto) => {
-  if(progetto.getTitle().toLowerCase().includes(ricerca.toLowerCase())) {progettiTrovati.push(progetto)}
+  if (progetto.getTitle().toLowerCase().includes(ricerca.toLowerCase())) {
+    progettiTrovati.push(progetto);
+  }
 });
 let progetti_per_page = 4;
 const arrays = [];
@@ -116,7 +118,7 @@ function instanziaBottoni(arrayProgetti) {
     modmenu.style.width = "80%";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      window.location.href = "project-page.html?id="+mod.getId();
+      window.location.href = "project-page.html?id=" + mod.getId()+"&lang="+Traduttore.current_name;
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

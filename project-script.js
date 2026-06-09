@@ -1,5 +1,6 @@
 import * as Progetti from "./var_globali.js";
 import * as Instanze from "./menu_instanze.js";
+import * as Traduttore from "./traduttore.js";
 
 Instanze.creaLogo();
 Instanze.creaBarraDiRicerca();
@@ -7,13 +8,13 @@ Instanze.creaMenu(
   Progetti.mods,
   ".menu_mods",
   "mods_minecraft",
-  "Mod Di Minecraft",
+ Traduttore.traduci("menu_mods"),
 );
 Instanze.creaMenu(
   Progetti.altriProgetti,
   ".menu_altri_progetti",
   "altri_progetti",
-  "Altri Progetti",
+  Traduttore.traduci("menu_otherprojects"),
 );
 
 (async () => {
@@ -49,7 +50,7 @@ Instanze.creaMenu(
     const titolo = document.querySelector(".title_project");
     titolo.textContent = progetto.getTitle();
     const bottone = document.querySelector(".download_file");
-    bottone.textContent = "Scarica " + progetto.getTitle();
+    bottone.textContent = Traduttore.traduci("download_file")+" " + progetto.getTitle();
     bottone.addEventListener("click", function () {
       window.location.href = progetto.getJarPath();
     });
@@ -94,7 +95,7 @@ Instanze.creaMenu(
     if (progetto.hasGallery()) {
       const galleryButton = document.createElement("button");
       galleryButton.classList.add("gallery_button");
-      galleryButton.textContent = "Galleria";
+      galleryButton.textContent = Traduttore.traduci("gallery_button");
       document.querySelector(".schermo_sotto").appendChild(galleryButton);
       let giapremuto = false;
       galleryButton.addEventListener("click", function () {
@@ -102,7 +103,7 @@ Instanze.creaMenu(
         giapremuto = !giapremuto;
         if (giapremuto) {
           console.log("test 2 superato");
-          galleryButton.textContent = "Descrizione";
+          galleryButton.textContent = Traduttore.traduci("description_button");
           descrizione.style.display = "none";
           document.querySelector(".sfondo_descrizione").style.display = "none";
           const immagini = progetto.getGallery();
@@ -190,7 +191,7 @@ Instanze.creaMenu(
             }
           });
         } else {
-          galleryButton.textContent = "Galleria";
+          galleryButton.textContent = Traduttore.traduci("gallery_button");
           document.querySelector(".buttonDestra").remove();
           document.querySelector(".buttonSinistra").remove();
           document.querySelector(".img_corrente").remove();

@@ -14,5 +14,10 @@
   "description_javaita": "descrizioni/javaita_en.md",
   "searchbar_placeholder": "Search something...",
   "menu_mods": "Minecraft Mods",
-  "menu_otherprojects": "Other Projects"
+  "menu_otherprojects": "Other Projects",
+   "gallery_button":"Gallery",
+  "description_button":"Description",
+  "download_file":"Download",
+  "search_results": "Search results for: ",
+  "search_title": "Search"
 }
