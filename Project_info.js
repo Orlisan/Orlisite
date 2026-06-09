@@ -1,4 +1,6 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+import * as Traduttore from "./traduttore.js";
+
 export class Project_info{
     #pathImg;
     #title;
@@ -25,11 +27,11 @@ export class Project_info{
         return this.#title;
     }
     getSummary(){
-        return this.#summary;
+        return Traduttore.traduci(this.#summary);
     }
     async getDescription(){
         try{
-            const markDownGrezzo = await fetch(this.#pathDescription);
+            const markDownGrezzo = await fetch(Traduttore.traduci(this.#pathDescription));
             const testoMarkdown = await markDownGrezzo.text();
             return marked.parse(testoMarkdown);
         }catch(errore) {

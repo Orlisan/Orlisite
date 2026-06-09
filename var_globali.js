@@ -3,9 +3,9 @@ import { Project_info } from "./Project_info.js";
 export const scythesmod = new Project_info(
   "textures/logo_falci.png",
   "Apocalyptic Scythes",
-  "Una mod che aggiunge 5 falci",
+  "summary_apocalyptic_scythes",
   "scythesmod",
-  "descrizioni/apocalyptic_scythes.md",
+  "description_apocalyptic_scythes",
   "downloads/apocalyptic_scythes-1.2.1.jar",
   true,
   ["textures/screenshots-scythesmod (2).png","textures/screenshots-scythesmod (3).png",
@@ -16,9 +16,9 @@ export const scythesmod = new Project_info(
 export const spongesoverhaul = new Project_info(
   "textures/logo_spugne.png",
   "Sponges Overhaul",
-  "La mod aggiunge 7 spugne", 
+  "summary_sponges_overhaul", 
   "spongesoverhaul",
-  "descrizioni/sponges_overhaul.md",
+  "description_sponges_overhaul",
   "downloads/sponges-overhaul-1.0.2.jar",
   true,
   ["textures/sponges_screenshot.png"]
@@ -26,9 +26,9 @@ export const spongesoverhaul = new Project_info(
 export const unsmpds = new Project_info(
   "textures/logo_unstablesmp.png",
   "UNSMPDS-Optimized",
-  "Improved BattyLeaf mod",
+  "summary_unstablesmp",
   "unsmpds",
-  "descrizioni/unstable_smp.md",
+  "description_unstablesmp",
   "downloads/unsmpds_optimized-1.0.0.jar",
   false,
   null
@@ -36,13 +36,13 @@ export const unsmpds = new Project_info(
 export const javaita = new Project_info(
   "textures/javaita_logo.png",
   "JavaITA",
-  "Java in Italiano!",
+  "summary_javaita",
   "javaita",
-  "descrizioni/javaita.md",
+  "description_javaita",
   "downloads/JavaITA.zip",
   false,
   null
-)
+);
 export const projectIds = {
     "scythesmod": scythesmod,
     "spongesoverhaul":spongesoverhaul,

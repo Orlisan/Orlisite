@@ -1,7 +1,18 @@
 {
-    "title_homepage": "¡¡Bienvenidos al sitio web oficial di Orlisan!!",
-    "subtitle_1": "¡Hola! Me llamo Orlisan online, soy un joven desarrollador",
-    "subtitle_2": "activo en el modding de Minecraft,",
-    "subtitle_3": "y con conocimientos de los lenguajes Java, C# y JavaScript",
-    "tooltip_languages": "IZ: Cambiar | DE: Aplicar"
+  "title_homepage": "¡¡Bienvenidos al sitio web oficial de Orlisan!!",
+  "subtitle_1": "¡Hola! Me llamo Orlisan online, soy un joven desarrollador",
+  "subtitle_2": "activo en el modding de Minecraft,",
+  "subtitle_3": "y con conocimientos de los lenguajes Java, C# y JavaScript",
+  "tooltip_languages": "IZ: Cambiar | DE: Aplicar",
+  "summary_apocalyptic_scythes": "Un mod que añade 5 guadañas",
+  "description_apocalyptic_scythes": "descrizioni/apocalyptic_scythes_es.md",
+  "summary_sponges_overhaul": "Un mod que añade 7 esponjas",
+  "description_sponges_overhaul": "descrizioni/sponges_overhaul_es.md",
+  "summary_unstablesmp": "Mod BattyLeaf mejorado",
+  "description_unstablesmp": "descrizioni/unstable_smp_es.md",
+  "summary_javaita": "¡Java en Italiano!",
+  "description_javaita": "descrizioni/javaita_es.md",
+  "searchbar_placeholder":"Buscar algo...",
+  "menu_mods": "Mods de Minecraft",
+  "menu_otherprojects": "Otros Proyectos"
 }

@@ -8,13 +8,13 @@ InstanzaSchermoSopra.creaMenu(
   Progetti.mods,
   ".menu_mods",
   "mods_minecraft",
-  "Mod Di Minecraft",
+  Traduttore.traduci("menu_mods"),
 );
 InstanzaSchermoSopra.creaMenu(
   Progetti.altriProgetti,
   ".menu_altri_progetti",
   "altri_progetti",
-  "Altri Progetti",
+  Traduttore.traduci("menu_otherprojects"),
 );
 const spiatoreEntrateEdUscite = new IntersectionObserver(fun_007, {
   threshold: 0.7,

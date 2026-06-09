@@ -1,3 +1,4 @@
+import * as Traduttore from "./traduttore.js";
 export function creaLogo() {
   const orlisite = document.createElement("button");
   orlisite.style.position = "absolute";
@@ -16,11 +17,15 @@ export function creaLogo() {
   orlisite.style.outline = "none";
   document.querySelector(".schermo_sopra").appendChild(orlisite);
   orlisite.addEventListener("click", function() {
-    window.location.href = "index.html";
+    console.log("Cliccato");
+    const url = new URL(window.location.origin);
+    url.searchParams.set("lang", Traduttore.current_name);
+    window.location.href = url.toString();
   });
 }
 export function creaBarraDiRicerca() {
   const barraDiRicerca = document.querySelector(".barra_di_ricerca");
+  barraDiRicerca.placeholder = Traduttore.traduci("searchbar_placeholder");
 barraDiRicerca.addEventListener("mouseenter", function () {
   barraDiRicerca.style.borderColor = "red";
 });
@@ -32,7 +37,7 @@ document.addEventListener("keydown", function (e) {
     const valuta = barraDiRicerca.value;
     if (valuta != null && valuta.trim() != "") {
       barraDiRicerca.value = "";
-      window.location.href = "search.html?q=" + valuta;
+      window.location.href = "search.html?q=" + valuta+"&lang="+Traduttore.current_name;
     }
   }
 });
@@ -179,7 +184,7 @@ export function instanziaBottoni(arrayMods, menuProgetto) {
     modmenu.style.width = "280px";
     modmenu.style.height = "100px";
     modmenu.addEventListener("click", function () {
-      window.location.href = "project-page.html?id=" + mod.getId();
+      window.location.href = "project-page.html?id=" + mod.getId()+"&lang="+Traduttore.current_name;
     });
     const imgMod = document.createElement("img");
     imgMod.src = mod.getImgPath();

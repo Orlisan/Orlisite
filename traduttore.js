@@ -1,5 +1,5 @@
-let current_language = "it_it.json";
-let current_name = "it_it";
+export let current_language = "it_it.json";
+export let current_name = "it_it";
 const languages = ["it_it", "fr_fr", "en_gb", "de_de", "es_es"];
 let json = {};
 const params = new URLSearchParams(window.location.search);

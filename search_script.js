@@ -1,4 +1,7 @@
 import * as Contents from "./var_globali.js";
+import * as Traduttore from "./traduttore.js";
+import * as Instanze from "./menu_instanze.js";
+Instanze.creaLogo();
 const parametri = new URLSearchParams(window.location.search);
 
 const ricerca = parametri.get("q");
@@ -25,18 +28,19 @@ if (arrays.length > 0) {
   numPagina.style.fontFamily = `'Monocraft', sans-serif`;
   numPagina.style.fontSize = "30px";
   numPagina.style.position = "absolute";
-  numPagina.style.left = "60%";
+  numPagina.style.left = "80%";
   numPagina.style.top = "20px";
   numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
   menu.appendChild(numPagina);
   if (arrays.length > 1) {
     const bottoneDestra = document.createElement("button");
     bottoneDestra.style.position = "absolute";
-    bottoneDestra.style.left = "80%";
+    bottoneDestra.style.left = "90%";
     bottoneDestra.style.top = "5%";
     bottoneDestra.style.width = "100px";
     bottoneDestra.style.height = "75%";
     bottoneDestra.style.backgroundColor = "black";
+    bottoneDestra.style.outline = "none";
     const imgBotDestra = document.createElement("img");
     imgBotDestra.style.position = "absolute";
     imgBotDestra.src = "textures/freccia_pagina.svg";
@@ -56,10 +60,11 @@ if (arrays.length > 0) {
 
     const bottoneSinistra = document.createElement("button");
     bottoneSinistra.style.position = "absolute";
-    bottoneSinistra.style.left = "40%";
+    bottoneSinistra.style.left = "70%";
     bottoneSinistra.style.top = "5%";
     bottoneSinistra.style.width = "100px";
     bottoneSinistra.style.height = "75%";
+    bottoneSinistra.style.outline = "none";
     bottoneSinistra.style.backgroundColor = "black";
     const imgBotSinistra = document.createElement("img");
     imgBotSinistra.style.position = "absolute";
