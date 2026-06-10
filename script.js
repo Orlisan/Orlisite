@@ -240,8 +240,8 @@ divProva.style.width = "60%";
 divProva.style.height = "30%";
 const scrittaProva = document.createElement("h3");
 scrittaProva.style.color = "black";
-scrittaProva.textContent = "michiamoorlandoemichiamoancheorlisan";
-dividiInSpanEBastaOForseNo(scrittaProva, {"chiamo": "mangio", "chiamoa":"mangioa"});
+scrittaProva.textContent = "  Ciao! Mi Chiamo Orlando!";
+dividiInSpanEBastaOForseNo(scrittaProva, {"Chiamo": "Mangio"});
 faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
   divProva,
 );
