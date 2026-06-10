@@ -17,7 +17,7 @@ Instanze.creaMenu(
   Traduttore.traduci("menu_otherprojects"),
 );
 
-(async () => {
+(async () => { 
   const params = new URLSearchParams(window.location.search);
   const projectid = params.get("id");
   const progetto = Progetti.projectIds[projectid];
@@ -31,7 +31,21 @@ Instanze.creaMenu(
     error.textContent = "Oops, " + projectid + " non rientra nei nostri dati";
     document.querySelector(".schermo_sotto").appendChild(error);
     document.querySelector(".download_file").style.display = "none";
+    let metaNoIndex = document.querySelector('meta[name="robots"]');
+    if (!metaNoIndex) {
+        metaNoIndex = document.createElement('meta');
+        metaNoIndex.name = 'robots';
+        document.head.appendChild(metaNoIndex);
+    }
+    metaNoIndex.content = 'noindex';
   } else {
+     let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.rel = 'canonical';
+        document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = window.location.href;
     const icon = document.createElement("link");
     icon.rel = "icon";
     icon.type = "image/svg+xml";
