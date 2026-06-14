@@ -105,6 +105,7 @@ export function dividiInSpanEBastaOForseNo(paragrafo, mappaFrasiTopSecret) {
   }
   for (let i = 0; i < veroTextContent.length; i++) {
     const spanLettera = document.createElement("span");
+    spanLettera.setAttribute("translate", "no");
     spanLettera.style.position = "relative";
     spanLettera.textContent = veroTextContent[i];
     spanLettera.style.display = "inline-block";
@@ -127,6 +128,7 @@ export function dividiInSpanEBasta(paragrafo) {
   paragrafo.textContent = "";
   for (let i = 0; i < veroTextContent.length; i++) {
     const spanLettera = document.createElement("span");
+    spanLettera.setAttribute("translate", "no");
     spanLettera.style.position = "relative";
     spanLettera.textContent = veroTextContent[i];
     spanLettera.style.display = "inline-block";
@@ -142,6 +144,7 @@ export function creaOmbraColorataAlPassaggio(paragrafo) {
   paragrafo.textContent = "";
   for (let i = 0; i < veroTextContent.length; i++) {
     const spanLettera = document.createElement("span");
+    spanLettera.setAttribute("translate", "no");
     spanLettera.textContent = veroTextContent[i];
     spanLettera.style.display = "inline-block";
     spanLettera.style.zIndex = "1";

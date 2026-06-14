@@ -1,0 +1,162 @@
+
+<!--FATTA DA CLAUDE, COLORE CUSTOM AL PASSAGGIO DEL MOUSE, TRANSIZIONE IN SU AL CARICAMENTO E SCRITTA SOTTO IL TITOLO FATTE DA ME-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000}
+#bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+#container{position:relative;z-index:1;padding:16px}
+#export-btn{display:block;margin:0 auto 14px;padding:7px 22px;font-size:13px;cursor:pointer;border-radius:8px;border:1px solid #0f0;background:rgba(0,20,0,0.8);color:#0f0;font-family:monospace}
+svg#map{display:block;margin:0 auto;transition:transform 2s ease;}
+</style>
+<canvas id="bg" style="position:fixed;"></canvas>
+<div id="container">
+<svg id="map" width="640" height="700" viewBox="0 0 640 700">
+<defs>
+<filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="640" height="700" fill="rgba(0,0,0,0.55)" rx="12"/>
+
+<!-- Linee -->
+<!-- centro → matematica -->  
+<line x1="306" y1="330" x2="138" y2="148" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → storia -->
+<line x1="320" y1="318" x2="320" y2="148" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → italiano -->
+<line x1="334" y1="330" x2="502" y2="148" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → inglese -->
+<line x1="410" y1="348" x2="548" y2="285" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → arte -->
+<line x1="408" y1="375" x2="545" y2="425" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → tecnologia -->
+<line x1="378" y1="410" x2="478" y2="530" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → musica -->
+<line x1="320" y1="418" x2="320" y2="538" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → ed civica -->
+<line x1="262" y1="410" x2="162" y2="530" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → scienze -->
+<line x1="232" y1="375" x2="95" y2="425" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → spagnolo -->
+<line x1="230" y1="348" x2="92" y2="285" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → geo -->
+<line x1="255" y1="332" x2="100" y2="188" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+<!-- centro → motoria -->
+<line x1="320" y1="418" x2="320" y2="610" stroke="#0f0" stroke-width="0.8" opacity="0.6"/>
+
+<!-- CENTRO -->
+<rect class="rect_centro" x="210" y="312" width="220" height="68" rx="10" fill="rgba(0,30,0,0.9)" stroke="#0f0" stroke-width="1.5" filter="url(#glow)" style="transition: fill 1.5s ease;" color-pressed="rgba(255, 65, 0, 0.65)"/>
+<text x="320" y="340" text-anchor="middle" fill="#0f0" font-size="15" font-weight="bold" font-family="monospace">La Programmazione</text>
+<text x="320" y="364" text-anchor="middle" fill="#0a0" font-size="11" font-family="monospace">Tesina di terza media</text>
+<text x="320" y="394" text-anchor="middle" fill="#0b0" font-size="10" font-weight="bold" font-family="monospace">Questa mappa è stata realizzata con la programmazione</text>
+
+<!-- MATEMATICA -->
+<rect class="rect_centro" color-pressed="rgba(255, 64, 0, 0.65)" style="transition: fill 1.5s ease;"x="50" y="90" width="178" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="139" y="112" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Matematica</text>
+<text x="139" y="130" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Macchina di Turing / Bool</text>
+
+<!-- STORIA -->
+<rect class="rect_centro" color-pressed="rgba(64, 128, 255, 0.65)" style="transition: fill 1.5s ease;"x="234" y="90" width="172" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="320" y="112" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Storia</text>
+<text x="320" y="130" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Bombe / Guerra fredda</text>
+
+<!-- ITALIANO -->
+<rect class="rect_centro" color-pressed="rgba(255, 0, 255, 0.65)" style="transition: fill 1.5s ease;"x="412" y="90" width="178" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="501" y="112" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Italiano</text>
+<text x="501" y="130" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">I Promessi Sposi</text>
+
+<!-- GEOGRAFIA -->
+<rect class="rect_centro" color-pressed="rgba(255, 255, 255, 0.65)" style="transition: fill 1.5s ease;"x="18" y="160" width="174" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="105" y="182" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Geografia</text>
+<text x="105" y="200" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Telerilevamento / SV</text>
+
+<!-- INGLESE -->
+<rect class="rect_centro" color-pressed="rgba(255, 255, 128, 0.65)" style="transition: fill 1.5s ease;"x="462" y="258" width="170" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="547" y="280" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Inglese</text>
+<text x="547" y="298" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Ada Lovelace</text>
+
+<!-- SPAGNOLO -->
+<rect class="rect_centro" color-pressed="rgba(64, 64, 255, 0.65)" style="transition: fill 1.5s ease;"x="8" y="258" width="174" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="95" y="280" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Spagnolo</text>
+<text x="95" y="298" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">El Ajedrecista</text>
+
+<!-- ARTE -->
+<rect class="rect_centro" color-pressed="rgba(255, 255, 0, 0.65)" style="transition: fill 1.5s ease;"x="462" y="398" width="170" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="547" y="420" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Arte</text>
+<text x="547" y="438" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">NFT</text>
+
+<!-- SCIENZE -->
+<rect class="rect_centro" color-pressed="rgba(0, 255, 255, 0.65)" style="transition: fill 1.5s ease;"x="8" y="398" width="174" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="95" y="420" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Scienze</text>
+<text x="95" y="438" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Bioinformatica</text>
+
+<!-- TECNOLOGIA -->
+<rect class="rect_centro" color-pressed="rgba(128, 0, 255, 0.65)" style="transition: fill 1.5s ease;"x="390" y="504" width="178" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="479" y="526" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Tecnologia</text>
+<text x="479" y="544" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Microprocessori</text>
+
+<!-- MUSICA -->
+<rect class="rect_centro" color-pressed="rgba(0, 0, 255, 0.65)" style="transition: fill 1.5s ease;" x="234" y="538" width="172" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="320" y="560" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Musica</text>
+<text x="320" y="578" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Sintesi sonora</text>
+
+<!-- ED CIVICA -->
+<rect class="rect_centro" color-pressed="rgba(0, 255, 0, 0.65)" style="transition: fill 1.5s ease;"x="72" y="504" width="178" height="54" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="161" y="526" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Ed. Civica</text>
+<text x="161" y="544" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Diritto digitale / OS</text>
+
+<!-- MOTORIA -->
+<rect class="rect_centro" color-pressed="rgba(255, 0, 0, 0.65)" style="transition: fill 1.5s ease;"x="170" y="614" width="300" height="66" rx="8" fill="rgba(0,20,0,0.85)" stroke="#0c0" stroke-width="0.8"/>
+<text x="320" y="636" text-anchor="middle" fill="#0f0" font-size="12" font-weight="bold" font-family="monospace">Scienze Motorie</text>
+<text x="320" y="652" text-anchor="middle" fill="#0a0" font-size="10" font-family="monospace">Basket · Pallavolo · Badminton*</text>
+<text x="320" y="668" text-anchor="middle" fill="#070" font-size="9" font-family="monospace">*estratto a sorte</text>
+</svg>
+</div>
+<script>
+  //Parte fatta da me
+const centri = document.querySelectorAll(".rect_centro");
+centri.forEach(centro => {
+  centro.addEventListener("mouseenter", function() {
+    centro.style.fill = centro.getAttribute("color-pressed");
+  });
+  centro.addEventListener("mouseleave", function() {
+    centro.style.fill = "rgba(0,20,0,0.85)";
+  });
+});
+//Fine parte fatta da me, rect centri e cose html di color-pressed messi da me
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
+function resizeCanvas() {
+    canvas.width = Math.max(window.innerWidth, document.body.scrollWidth);
+    canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+   window.addEventListener("load", function() {
+    resizeCanvas();
+    const anim = document.getElementById('map');
+    anim.style.transform = "translateY(0%)";
+    anim.style.transition = "transform 2s ease";
+    anim.style.transform = "translateY(-12%)";
+   });
+//L'AI aveva messo const e dava unchaught type error
+let cols=Math.floor(canvas.width/14);
+let drops=Array(cols).fill(1);
+const chars='アイウエオカキクケコサシスセソタチツテトナニヌネノ01アBC'.split('');
+function draw(){
+   if (cols !== Math.floor(canvas.width / 14)) {
+        cols = Math.floor(canvas.width / 14);
+        drops = Array(cols).fill(1);
+    }
+    
+  ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#0f0';ctx.font='12px monospace';
+  drops.forEach((y,i)=>{
+    const c=chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(c,i*14,y*14);
+    if(y*14>canvas.height&&Math.random()>0.975)drops[i]=0;
+    drops[i]++;
+  });
+}
+setInterval(draw,50);
+
+</script>

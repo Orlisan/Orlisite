@@ -6,8 +6,12 @@ body {
   padding: 0;
   height: 100vh;
   overflow-x: hidden;
+  animation: arcobaleno 3s linear infinite;
 }
-
+@keyframes arcobaleno {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
 .schermo_sopra {
   z-index: 2;
   width: 100%;
