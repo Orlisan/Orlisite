@@ -33,6 +33,18 @@ export const unsmpds = new Project_info(
   false,
   null
 );
+export const buildabletextures = new Project_info(
+  "textures/logo_bt.png",
+  "Buildable Textures",
+  "summary_bt",
+  "buildabletextures",
+  "description_bt",
+  "downloads/buildabletextures-1.0.0.jar",
+  true,
+  ["textures/bt_1.png","textures/bt_2.png",
+    "textures/bt_3.png", "textures/bt_4.png"
+  ]
+);
 export const javaita = new Project_info(
   "textures/javaita_logo.png",
   "JavaITA",
@@ -47,8 +59,9 @@ export const projectIds = {
     "scythesmod": scythesmod,
     "spongesoverhaul":spongesoverhaul,
     "unsmpds": unsmpds,
-    "javaita": javaita
+    "javaita": javaita,
+    "buildabletextures": buildabletextures
 }
 export const altriProgetti = [javaita];
-export const mods = [scythesmod, spongesoverhaul, unsmpds];
+export const mods = [scythesmod, spongesoverhaul, unsmpds, buildabletextures];
 export const progetti = [...mods, ...altriProgetti];

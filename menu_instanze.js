@@ -154,7 +154,7 @@ export function inizializzaMenu(Progetti, menuProgetto) {
     bottoneSinistra.addEventListener("click", function () {
       if (paginaCorrente - 1 >= 0) {
         paginaCorrente -= 1;
-        instanziaBottoni(arrays[paginaCorrente]);
+        instanziaBottoni(arrays[paginaCorrente], menuProgetto);
         numPagina.textContent = paginaCorrente + 1 + "/" + pagineTotali;
       }
     });

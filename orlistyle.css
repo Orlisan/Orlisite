@@ -6,7 +6,7 @@ body {
   padding: 0;
   height: 100vh;
   overflow-x: hidden;
-  animation: arcobaleno 3s linear infinite;
+  /*animation: arcobaleno 3s linear infinite;*/
 }
 @keyframes arcobaleno {
   0% { filter: hue-rotate(0deg); }

@@ -12,13 +12,15 @@
   "description_unstablesmp": "descrizioni/unstable_smp_en.md",
   "summary_javaita": "Java in Italian!",
   "description_javaita": "descrizioni/javaita_en.md",
+  "summary_bt": "Build your own blocks in-game!",
+  "description_bt": "descrizioni/buildabletextures_en.md",
   "searchbar_placeholder": "Search something...",
   "menu_mods": "Minecraft Mods",
   "menu_otherprojects": "Other Projects",
-   "gallery_button":"Gallery",
-  "description_button":"Description",
-  "download_file":"Download",
+  "gallery_button": "Gallery",
+  "description_button": "Description",
+  "download_file": "Download",
   "search_results": "Search results for: ",
   "search_title": "Search",
-  "chi_sono_title":"Who I am:"
+  "chi_sono_title": "Who I am:"
 }
