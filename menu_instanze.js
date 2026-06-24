@@ -17,10 +17,7 @@ export function creaLogo() {
   orlisite.style.outline = "none";
   document.querySelector(".schermo_sopra").appendChild(orlisite);
   orlisite.addEventListener("click", function () {
-    console.log("Cliccato");
-    const url = new URL(window.location.origin);
-    url.searchParams.set("lang", Traduttore.current_name);
-    window.location.href = url.toString();
+    window.location.href = "index.html?lang="+Traduttore.current_name;
   });
 }
 export function creaBarraDiRicerca() {
