@@ -31,10 +31,7 @@ document.addEventListener("mousemove", (e) => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
 });
-export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
-  div,
-) {
-  
+export function effettoRaggiX(div) {
   div.addEventListener("mouseleave", function () {
     if (document.querySelector(".dark_circle") !== null) {
       document.querySelector(".dark_circle").remove();
@@ -44,45 +41,45 @@ export function faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllI
     if (document.querySelector(".dark_circle") !== null) {
       document.querySelector(".dark_circle").remove();
     }
-      const darkCircle = document.createElement("div");
-      darkCircle.classList.add("dark_circle");
-      darkCircle.style.backgroundColor = "black";
-      darkCircle.style.position = "fixed";
-      darkCircle.style.borderRadius = "50%";
-      darkCircle.style.width = "30px";
-      darkCircle.style.height = "30px";
-      darkCircle.style.left = mouse.x - 15 + "px";
-      darkCircle.style.top = mouse.y - 15 + "px";
-      div.appendChild(darkCircle);
-      darkCircle.style.zIndex = div.style.zIndex + 1;
-      const boxCircle = darkCircle.getBoundingClientRect();
-      const spans = document.querySelectorAll("span");
-      spans.forEach((span) => {
-        const boxSpan = span.getBoundingClientRect();
-        const dentroCircle =
-          boxSpan.top >= boxCircle.top - boxSpan.height &&
-          boxSpan.bottom <= boxCircle.bottom + boxSpan.height &&
-          boxSpan.left >= boxCircle.left - boxSpan.width &&
-          boxSpan.right <= boxCircle.right + boxSpan.width;
-        const boxDiv = div.getBoundingClientRect();
-        const dentroDiv =
-          boxSpan.top >= boxDiv.top &&
-          boxSpan.bottom <= boxDiv.bottom &&
-          boxSpan.left >= boxDiv.left &&
-          boxSpan.right <= boxDiv.right;
-        if (dentroCircle && dentroDiv) {
-          if (span.hasAttribute("secret_letter")) {
-            span.textContent = span.getAttribute("secret_letter");
-          }
-          span.style.color = "white";
-          span.style.zIndex = darkCircle.style.zIndex + 1;
-        } else if (dentroDiv) {
-          if (span.hasAttribute("normal_letter")) {
-            span.textContent = span.getAttribute("normal_letter");
-          }
-          span.style.color = "black";
+    const darkCircle = document.createElement("div");
+    darkCircle.classList.add("dark_circle");
+    darkCircle.style.backgroundColor = "black";
+    darkCircle.style.position = "fixed";
+    darkCircle.style.borderRadius = "50%";
+    darkCircle.style.width = "30px";
+    darkCircle.style.height = "30px";
+    darkCircle.style.left = mouse.x - 15 + "px";
+    darkCircle.style.top = mouse.y - 15 + "px";
+    div.appendChild(darkCircle);
+    darkCircle.style.zIndex = div.style.zIndex + 2;
+    const boxCircle = darkCircle.getBoundingClientRect();
+    const spans = document.querySelectorAll("span");
+    spans.forEach((span) => {
+      const boxSpan = span.getBoundingClientRect();
+      const dentroCircle =
+        boxSpan.top >= boxCircle.top - boxSpan.height &&
+        boxSpan.bottom <= boxCircle.bottom + boxSpan.height &&
+        boxSpan.left >= boxCircle.left - boxSpan.width &&
+        boxSpan.right <= boxCircle.right + boxSpan.width;
+      const boxDiv = div.getBoundingClientRect();
+      const dentroDiv =
+        boxSpan.top >= boxDiv.top &&
+        boxSpan.bottom <= boxDiv.bottom &&
+        boxSpan.left >= boxDiv.left &&
+        boxSpan.right <= boxDiv.right;
+      if (dentroCircle && dentroDiv) {
+        if (span.hasAttribute("secret_letter")) {
+          span.textContent = span.getAttribute("secret_letter");
         }
-      });
+        span.style.color = "white";
+        span.style.zIndex = darkCircle.style.zIndex + 1;
+      } else if (dentroDiv) {
+        if (span.hasAttribute("normal_letter")) {
+          span.textContent = span.getAttribute("normal_letter");
+        }
+        span.style.color = "black";
+      }
+    });
   });
 }
 export function dividiInSpanEBastaOForseNo(paragrafo, mappaFrasiTopSecret) {
@@ -114,10 +111,7 @@ export function dividiInSpanEBastaOForseNo(paragrafo, mappaFrasiTopSecret) {
       spanLettera.innerHTML = "&nbsp";
     }
     if (i in arrayIndexsDaSostituire) {
-      spanLettera.setAttribute(
-        "secret_letter",
-        arrayIndexsDaSostituire[i]
-      );
+      spanLettera.setAttribute("secret_letter", arrayIndexsDaSostituire[i]);
       spanLettera.setAttribute("normal_letter", spanLettera.textContent);
     }
     paragrafo.appendChild(spanLettera);
@@ -244,10 +238,8 @@ divProva.style.height = "30%";
 const scrittaProva = document.createElement("h3");
 scrittaProva.style.color = "black";
 scrittaProva.textContent = "  Ciao! Mi Chiamo Orlando!";
-dividiInSpanEBastaOForseNo(scrittaProva, {"Chiamo": "Mangio"});
-faiCerchioNeroSuSfondoBiancoAlCursoreERendiBianchiICaratteriAllInternoPresupponendoSianoNeriESpanConApprossimazioneDatoCheNonHoVogliaDiUsareIlTeoremaDiPitagora(
-  divProva,
-);
+dividiInSpanEBastaOForseNo(scrittaProva, { Chiamo: "Mangio" });
+effettoRaggiX(divProva);
 divProva.appendChild(scrittaProva);
 schermoSotto.appendChild(divProva);
 //Cose di fine pagina: "Sito scritto interamente in html, css e javascript,

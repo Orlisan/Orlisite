@@ -1,6 +1,6 @@
 export let current_language = "it_it.json";
 export let current_name = "it_it";
-const languages = ["it_it", "fr_fr", "en_gb", "de_de", "es_es"];
+export const languages = ["it_it", "fr_fr", "en_gb", "de_de", "es_es"];
 let json = {};
 const params = new URLSearchParams(window.location.search);
 const bandiereInerentiAlleStringhe = {
@@ -10,6 +10,13 @@ const bandiereInerentiAlleStringhe = {
   en_gb: "textures/Flag_of_the_United_Kingdom.svg",
   de_de: "textures/Flag_of_Germany.svg",
 };
+export const nomiLanguages = {
+  "tedesco": "de_de",
+  "inglese": "en_gb",
+  "italiano": "it_it",
+  "spagnolo": "es_es",
+  "francese": "fr_fr"
+}
 if (languages.includes(params.get("lang"))) {
   current_language = params.get("lang") + ".json";
   current_name = params.get("lang");

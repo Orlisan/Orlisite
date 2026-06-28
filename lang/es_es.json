@@ -22,5 +22,10 @@
   "download_file": "Descargar",
   "search_results": "Resultados de búsqueda de: ",
   "search_title": "Búsqueda",
-  "chi_sono_title": "Quien soy: "
+  "chi_sono_title": "Quien soy: ",
+  "alemán": "tedesco",
+  "inglés":"inglese",
+  "italiano": "italiano",
+  "francés": "francese",
+  "español": "spagnolo"
 }
