@@ -27,7 +27,7 @@ bottoneTerminale.addEventListener("mouseenter", function () {
 });
 bottoneTerminale.addEventListener("mouseleave", function () {
   isScaling = false;
-  togliInput();
+  togliTesti();
   animCmd();
 });
 function animCmd() {
@@ -83,18 +83,29 @@ function creaTesti() {
   Animazioni.dividiInSpanEBasta(output);
   Animazioni.effettoRaggiX(bottoneTerminale);
 }
-function togliInput() {
+function togliTesti() {
   if (document.querySelector(".input_cmd"))
     document.querySelector(".input_cmd").remove();
+  if (document.querySelector(".output_cmd"))
+    document.querySelector(".output_cmd").remove();
   inputCreato = false;
 }
 function parseTesto(testo) {
   if (testo.startsWith("cd ") || testo.startsWith("changedirectory")) {
-    window.location.href =
-      "project-page.html?id=" +
-      testo.split(" ")[1] +
-      "&lang=" +
-      Traduttore.current_name;
+    if (testo.split(" ")[1].toLowerCase() === "curseforge") {
+      window.open(
+        "https://curseforge.com/members/orlisan12/projects",
+        "_blank",
+      );
+    } else if (testo.split(" ")[1].toLowerCase() === "modrinth") {
+      window.open("https://modrinth.com/user/Orlisan", "_blank");
+    } else {
+      window.location.href =
+        "project-page.html?id=" +
+        testo.split(" ")[1] +
+        "&lang=" +
+        Traduttore.current_name;
+    }
   } else if (testo.startsWith("copy")) {
     //Da Migliorare e Tradurre
     navigator.clipboard.writeText("Ciao dall'Orlisite!");
