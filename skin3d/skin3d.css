@@ -7,4 +7,13 @@
     height: 60%;
     border-radius:10px;
     border-color:orange;
+   /*z-index: -999999999999999999999999999;*/
+}
+.bot_camera{
+   position:absolute;
+   left: 10%;
+   top: 10%;
+   width: 10%;
+   height: 5%;
+   background-color: pink; 
 }
