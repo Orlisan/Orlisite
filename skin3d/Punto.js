@@ -10,6 +10,7 @@ export class Punto {
   #OriginalZ;
   #OriginalInclinazioneXZ = 0;
   #OriginalInclinazioneYZ = 0;
+  #Div;
   constructor(x, y, z, color, className) {
     this.#X = x;
     this.#Y = y;
@@ -22,6 +23,12 @@ export class Punto {
   }
   getX() {
     return this.#X;
+  }
+  setDiv(newDiv) {
+    this.#Div = newDiv;
+  }
+  getDiv() {
+    return this.#Div;
   }
   getOriginalInclinazioneXZ() {
     return this.#OriginalInclinazioneXZ;
