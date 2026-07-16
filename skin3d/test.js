@@ -1,2 +1,17 @@
-console.log(Math.trunc(Math.asin(-0.5)*180/Math.PI));
-console.log(Math.sin(150*Math.PI/180));
+import {Punto} from "./Punto.js";
+faiQualcosaEstratto();
+
+function faiQualcosa() {
+    const punto = new Punto();
+    punto.setX(3);
+    console.log(punto.getX());
+}
+function faiQualcosaEstratto(){
+     const punto = new Punto();
+    extracted(punto);
+    console.log(punto.getX());
+}
+
+function extracted(punto) {
+    punto.setX(3);
+}

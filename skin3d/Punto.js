@@ -11,6 +11,8 @@ export class Punto {
   #OriginalInclinazioneXZ = 0;
   #OriginalInclinazioneYZ = 0;
   #Div;
+  #DistanzaXZ;
+  #DistanzaYZ;
   constructor(x, y, z, color, className) {
     this.#X = x;
     this.#Y = y;
@@ -30,25 +32,37 @@ export class Punto {
   getDiv() {
     return this.#Div;
   }
+  setDistanzaYZ(newYZ) {
+    this.#DistanzaYZ = newYZ;
+  }
+  getDistanzaYZ() {
+    return this.#DistanzaYZ;
+  }
+  setDistanzaXZ(newXZ) {
+    this.#DistanzaXZ = newXZ;
+  }
+  getDistanzaXZ() {
+    return this.#DistanzaXZ;
+  }
   getOriginalInclinazioneXZ() {
     return this.#OriginalInclinazioneXZ;
   }
   setOriginalInclinazioneXZ(newInclinazione) {
     this.#OriginalInclinazioneXZ = newInclinazione;
-  } 
+  }
   getOriginalInclinazioneYZ() {
     return this.#OriginalInclinazioneYZ;
   }
   setOriginalInclinazioneYZ(newInclinazione) {
     this.#OriginalInclinazioneYZ = newInclinazione;
-  } 
+  }
   getY() {
     return this.#Y;
   }
   getZ() {
     return this.#Z;
   }
-  getOriginalX(){
+  getOriginalX() {
     return this.#OriginalX;
   }
   getOriginalY() {
@@ -64,12 +78,49 @@ export class Punto {
     return this.#className;
   }
   withX(newX) {
-    return new Punto(newX, this.#Y, this.#Z);
+    const punto = new Punto(
+      newX,
+      this.#Y,
+      this.#Z,
+      this.#color,
+      this.#className,
+    );
+    punto.setOriginalInclinazioneXZ(this.#OriginalInclinazioneXZ);
+    punto.setOriginalInclinazioneYZ(this.#OriginalInclinazioneYZ);
+    punto.setDiv(this.#Div);
+    punto.setDistanzaXZ(this.#DistanzaXZ);
+    punto.setDistanzaYZ(this.#DistanzaYZ);
+    return punto;
   }
   withY(newY) {
-    return new Punto(this.#X, newY, this.#Z);
+    const punto = new Punto(
+      this.#X,
+      newY,
+      this.#Z,
+      this.#color,
+      this.#className,
+    );
+    punto.setOriginalInclinazioneXZ(this.#OriginalInclinazioneXZ);
+    punto.setOriginalInclinazioneYZ(this.#OriginalInclinazioneYZ);
+    punto.setDiv(this.#Div);
+    punto.setDistanzaXZ(this.#DistanzaXZ);
+    punto.setDistanzaYZ(this.#DistanzaYZ);
+    return punto;
   }
   withZ(newZ) {
+    const punto = new Punto(
+      this.#X,
+      this.#Y,
+      newZ,
+      this.#color,
+      this.#className,
+    );
+    punto.setOriginalInclinazioneXZ(this.#OriginalInclinazioneXZ);
+    punto.setOriginalInclinazioneYZ(this.#OriginalInclinazioneYZ);
+    punto.setDiv(this.#Div);
+    punto.setDistanzaXZ(this.#DistanzaXZ);
+    punto.setDistanzaYZ(this.#DistanzaYZ);
+    return punto;
     return new Punto(this.#X, this.#Y, newZ);
   }
   setX(newX) {
