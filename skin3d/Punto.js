@@ -8,7 +8,8 @@ export class Punto {
   #OriginalX;
   #OriginalY;
   #OriginalZ;
-  #OriginalInclinazione = 0;
+  #OriginalInclinazioneXZ = 0;
+  #OriginalInclinazioneYZ = 0;
   constructor(x, y, z, color, className) {
     this.#X = x;
     this.#Y = y;
@@ -22,11 +23,17 @@ export class Punto {
   getX() {
     return this.#X;
   }
-  getOriginalInclinazione() {
-    return this.#OriginalInclinazione;
+  getOriginalInclinazioneXZ() {
+    return this.#OriginalInclinazioneXZ;
   }
-  setOriginalInclinazione(newInclinazione) {
-    this.#OriginalInclinazione = newInclinazione;
+  setOriginalInclinazioneXZ(newInclinazione) {
+    this.#OriginalInclinazioneXZ = newInclinazione;
+  } 
+  getOriginalInclinazioneYZ() {
+    return this.#OriginalInclinazioneYZ;
+  }
+  setOriginalInclinazioneYZ(newInclinazione) {
+    this.#OriginalInclinazioneYZ = newInclinazione;
   } 
   getY() {
     return this.#Y;
