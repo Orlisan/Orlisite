@@ -188,8 +188,8 @@ function realFindY(punto) {
 function rotate(dirX, dirY) {
   requestAnimationFrame(() => {
     const incXRad = (inclinazioneX * Math.PI) / 180;
-    const Y = dirY ? +2 : -2;
-    const X = dirX ? +2 : -2;
+    const Y = dirY ? +1 : -1;
+    const X = dirX ? +1 : -1;
     punti.forEach((punto) => {
       let x1 = punto.getX();
       let z1 = punto.getZ();
@@ -225,7 +225,7 @@ function rotate(dirX, dirY) {
 }
 function createPoints() {
   punti.forEach((punto) => {
-    const divPunto = document.createElement("div");
+    const divPunto = document.createElement("rect");
     divPunto.classList.add(punto.getClassName());
     sfondo.appendChild(divPunto);
     punto.setDiv(divPunto);
@@ -235,12 +235,12 @@ function createPoints() {
 function repaint() {
   punti.forEach((punto) => {
     if (!personadallAlto) {
-      if (punto.getZ() < zMinima) {
-        zMinima = punto.getZ();
+      if (Math.trunc(punto.getZ()) < zMinima) {
+        zMinima = Math.trunc(punto.getZ());
       }
     } else {
-      if (punto.getY() < zMinima) {
-        zMinima = punto.getY();
+      if (Math.trunc(punto.getY()) < zMinima) {
+        zMinima = Math.trunc(punto.getY());
       }
     }
     renderPunto(punto);
@@ -269,11 +269,12 @@ function renderPunto(punto) {
     divpunto.style.width = "10px";
     divpunto.style.height = "10px";
     divpunto.style.backgroundColor = punto.getColor();
-   /*console.log(
+    /*console.log(
       "PUNTO: " + punto.getClassName() + (centroZ + Math.trunc(punto.getZ())),
     );*/
     //Z-INDEX NULLO?
-    console.log(divpunto.style.zIndex);
+    //.log(divpunto.style.zIndex);
+    //console.log("PUNTO: "+punto.getClassName()+" ZINDEX:"+(centroZ + Math.trunc(punto.getZ()) + Math.abs(zMinima)));
     divpunto.style.zIndex =
       centroZ + Math.trunc(punto.getZ()) + Math.abs(zMinima);
   } else {
@@ -296,3 +297,9 @@ botCamera.addEventListener("click", function () {
 });
 botCamera.classList.add("bot_camera");
 document.querySelector("body").appendChild(botCamera);
+document.addEventListener("resize", function () {
+  console.log("Resize Chiamato");
+  centroX = sfondo.clientWidth / 2;
+  centroY = sfondo.clientHeight / 2;
+  repaint();
+});
