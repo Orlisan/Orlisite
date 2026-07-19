@@ -8,7 +8,7 @@ const centroX = sfondo.clientWidth / 2;
 const centroY = sfondo.clientHeight / 2;
 const centroZ = 60;
 let personadallAlto = false;
-
+//DA TRASFERIRE
 let punti = [];
 const img = new Image();
 img.src = "../textures/skin_mc.png";
@@ -95,7 +95,7 @@ img.onload = function () {
       punti[indicePunti] = new Punto(
         j,
         16 * 8,
-        i,
+        i+8,
         "rgba(" +
           pixelCorrenteTestaSopra[0] +
           "," +
@@ -104,6 +104,86 @@ img.onload = function () {
           pixelCorrenteTestaSopra[2] +
           "," +
           pixelCorrenteTestaSopra[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+
+      const pixelsTestaSotto = trovaRettangolo(48, 0, 8, 8);
+      const pixelCorrenteTestaSotto =
+        pixelsTestaSotto[trovaStartIndex(8, uvI, uvJ)];
+      punti[indicePunti] = new Punto(
+        j,
+        9 * 8,
+        i+8,
+        "rgba(" +
+          pixelCorrenteTestaSotto[0] +
+          "," +
+          pixelCorrenteTestaSotto[1] +
+          "," +
+          pixelCorrenteTestaSotto[2] +
+          "," +
+          pixelCorrenteTestaSotto[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+
+      const pixelsFacciaDietro = trovaRettangolo(56, 8, 8, 8);
+      const pixelCorrenteFacciaDietro =
+        pixelsFacciaDietro[trovaStartIndex(8, uvI, uvJ)];
+      punti[indicePunti] = new Punto(
+        -j-8,
+        12 * 8 - i,
+        -3 * 8,
+        "rgba(" +
+          pixelCorrenteFacciaDietro[0] +
+          "," +
+          pixelCorrenteFacciaDietro[1] +
+          "," +
+          pixelCorrenteFacciaDietro[2] +
+          "," +
+          pixelCorrenteFacciaDietro[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+
+      const pixelsFacciaDestra = trovaRettangolo(48, 8, 8, 8);
+      const pixelCorrenteFacciaDestra =
+        pixelsFacciaDestra[trovaStartIndex(8, uvI, uvJ)];
+      punti[indicePunti] = new Punto(
+        (4-1)*8,
+        12 * 8 - i,
+        j+8,
+        "rgba(" +
+          pixelCorrenteFacciaDestra[0] +
+          "," +
+          pixelCorrenteFacciaDestra[1] +
+          "," +
+          pixelCorrenteFacciaDestra[2] +
+          "," +
+          pixelCorrenteFacciaDestra[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+
+      const pixelsFacciaSinistra = trovaRettangolo(32, 8, 8, 8);
+      const pixelCorrenteFacciaSinistra =
+        pixelsFacciaSinistra[trovaStartIndex(8, uvI, uvJ)];
+      punti[indicePunti] = new Punto(
+        -4*8,
+        12 * 8 - i,
+        j+8,
+        "rgba(" +
+          pixelCorrenteFacciaSinistra[0] +
+          "," +
+          pixelCorrenteFacciaSinistra[1] +
+          "," +
+          pixelCorrenteFacciaSinistra[2] +
+          "," +
+          pixelCorrenteFacciaSinistra[3] +
           ")",
         "punto_" + indicePunti,
       );
@@ -141,7 +221,7 @@ function trovaRettangolo(x, y, width, height) {
     } else {
       counterX = 0;
       counterY++;
-      i = realStartIndex + larghezza * counterY -1;
+      i = realStartIndex + larghezza * counterY - 1;
     }
   }
   return arrayRect;
@@ -150,7 +230,9 @@ function trovaRettangolo(x, y, width, height) {
 function trovaStartIndex(larghezza, y, x) {
   return larghezza * y + x;
 }
-const puntoCentro = new Punto(centroX, centroY, centroZ, "", "");
+
+//FINE DA TRANSFERIRE
+/*const puntoCentro = new Punto(centroX, centroY, centroZ, "", "");
 const punto1 = new Punto(-60, -60, 60, "black", "punto_1");
 const punto2 = new Punto(-60, -60, -60, "red", "punto_2");
 const punto3 = new Punto(60, -60, 60, "black", "punto_3");
@@ -159,7 +241,7 @@ const punto4 = new Punto(60, -60, -60, "red", "punto_4");
 const punto5 = new Punto(-60, 60, 60, "green", "punto_5");
 const punto6 = new Punto(-60, 60, -60, "blue", "punto_6");
 const punto7 = new Punto(60, 60, 60, "green", "punto_7");
-const punto8 = new Punto(60, 60, -60, "blue", "punto_8");
+const punto8 = new Punto(60, 60, -60, "blue", "punto_8");*/
 /*  punto1,
   punto2,
   punto3,
@@ -406,7 +488,7 @@ function renderPunto(punto) {
   const divpunto = punto.getDiv();
   if (!personadallAlto) {
     divpunto.style.position = "absolute";
-    divpunto.style.left = centroX + -punto.getX() + "px";
+    divpunto.style.left = centroX + punto.getX() + "px";
     divpunto.style.top = centroY + -punto.getY() + "px";
     divpunto.style.width = "8px";
     divpunto.style.height = "8px";
@@ -421,7 +503,7 @@ function renderPunto(punto) {
       centroZ + Math.trunc(punto.getZ()) + Math.abs(zMinima);
   } else {
     divpunto.style.position = "absolute";
-    divpunto.style.left = centroX + -punto.getX() + "px";
+    divpunto.style.left = centroX + punto.getX() + "px";
     divpunto.style.top = centroZ + -punto.getZ() + "px";
     divpunto.style.width = "8px";
     divpunto.style.height = "8px";
