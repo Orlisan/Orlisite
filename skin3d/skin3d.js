@@ -412,8 +412,10 @@ function realFindY(punto) {
 function rotate(dirX, dirY) {
   requestAnimationFrame(() => {
     const incXRad = (inclinazioneX * Math.PI) / 180;
-    const Y = dirY ? +1 : -1;
-    const X = dirX ? +1 : -1;
+    const inclinazioneAbs = 1;
+    const inclinazione = [+inclinazioneAbs, -inclinazioneAbs];
+    const Y = dirY ? inclinazione[0] : inclinazione[1];
+    const X = dirX ? inclinazione[0] : inclinazione[1];
     punti.forEach((punto) => {
       let x1 = punto.getX();
       let z1 = punto.getZ();
