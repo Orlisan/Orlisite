@@ -9,6 +9,147 @@ const centroY = sfondo.clientHeight / 2;
 const centroZ = 60;
 let personadallAlto = false;
 
+let punti = [];
+const img = new Image();
+img.src = "../textures/skin_mc.png";
+console.log("Esisto");
+let arrayPixel = [];
+let larghezza = 0;
+let altezza = 0;
+img.onload = function () {
+  console.log("Esisto ancora");
+  larghezza = img.width;
+  altezza = img.height;
+
+  console.log(`Dimensioni del PNG: ${larghezza}x${altezza} pixel`);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = larghezza;
+  canvas.height = altezza;
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  const imageData = ctx.getImageData(0, 0, larghezza, altezza);
+  const array = imageData.data;
+
+  let arrayColori = [];
+  let indexColori = 0;
+  let indexFinale = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (indexColori < 4) {
+      arrayColori[indexColori] = array[i];
+      indexColori++;
+    } else {
+      arrayPixel[indexFinale] = arrayColori;
+      arrayColori = [];
+      indexColori = 0;
+      indexFinale++;
+
+      arrayColori[indexColori] = array[i];
+      indexColori++;
+    }
+  }
+  console.log(arrayPixel[0], arrayPixel[1]);
+  /* for (let i = 0; i < arrayPixel.length - 1000; i++) {
+    console.log("indice: "+i+"pixel: "+arrayPixel[i]);
+  }*/
+  console.log(array[1332], array[1333], array[1334], array[1335]);
+  //console.log((13+larghezza*5)+arrayPixel[13+larghezza*5]);
+  console.log(trovaRettangolo(13, 5, 5, 4));
+
+  let indicePunti = 0;
+  for (let i = -4 * 8; i < 4 * 8; i += 8) {
+    for (let j = -32; j < 32; j += 8) {
+      const pixelsFacciaDavanti = trovaRettangolo(40, 8, 8, 8);
+      pixelsFacciaDavanti.forEach((p) => {
+        console.log(p);
+      });
+      console.log("Corrente index:" + trovaStartIndex(8, j, i));
+      console.log(pixelsFacciaDavanti.length);
+      const uvI = 4 + i / 8;
+      const uvJ = 4 + j / 8;
+      const pixelCorrenteFacciaDavanti =
+        pixelsFacciaDavanti[trovaStartIndex(8, uvI, uvJ)];
+      console.log("Pixel: " + pixelCorrenteFacciaDavanti);
+      punti[indicePunti] = new Punto(
+        j,
+        12 * 8 - i,
+        4 * 8,
+        "rgba(" +
+          pixelCorrenteFacciaDavanti[0] +
+          "," +
+          pixelCorrenteFacciaDavanti[1] +
+          "," +
+          pixelCorrenteFacciaDavanti[2] +
+          "," +
+          pixelCorrenteFacciaDavanti[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+
+      const pixelsTestaSopra = trovaRettangolo(40, 0, 8, 8);
+      const pixelCorrenteTestaSopra =
+        pixelsTestaSopra[trovaStartIndex(8, uvI, uvJ)];
+      punti[indicePunti] = new Punto(
+        j,
+        16 * 8,
+        i,
+        "rgba(" +
+          pixelCorrenteTestaSopra[0] +
+          "," +
+          pixelCorrenteTestaSopra[1] +
+          "," +
+          pixelCorrenteTestaSopra[2] +
+          "," +
+          pixelCorrenteTestaSopra[3] +
+          ")",
+        "punto_" + indicePunti,
+      );
+      indicePunti++;
+    }
+  }
+  createPoints();
+};
+
+function trovaRettangolo(x, y, width, height) {
+  const realStartIndex = trovaStartIndex(larghezza, y, x);
+  console.log("RealStartIndex:" + realStartIndex);
+  let arrayRect = [];
+  let indexPresi = 0;
+  let counterX = 0;
+  let counterY = 0;
+  for (let i = realStartIndex; i < arrayPixel.length; i++) {
+    if (counterY >= height) break;
+    if (counterX < width) {
+      arrayRect[indexPresi] = [...arrayPixel[i]];
+      /*console.log(
+        "CounterX: " +
+          counterX +
+          " Counter Y: " +
+          counterY +
+          " Index Presi: " +
+          indexPresi +
+          ", membro: " +
+          arrayPixel[i] +
+          " i: " +
+          i,
+      );*/
+      indexPresi++;
+      counterX++;
+    } else {
+      counterX = 0;
+      counterY++;
+      i = realStartIndex + larghezza * counterY -1;
+    }
+  }
+  return arrayRect;
+}
+
+function trovaStartIndex(larghezza, y, x) {
+  return larghezza * y + x;
+}
 const puntoCentro = new Punto(centroX, centroY, centroZ, "", "");
 const punto1 = new Punto(-60, -60, 60, "black", "punto_1");
 const punto2 = new Punto(-60, -60, -60, "red", "punto_2");
@@ -19,8 +160,7 @@ const punto5 = new Punto(-60, 60, 60, "green", "punto_5");
 const punto6 = new Punto(-60, 60, -60, "blue", "punto_6");
 const punto7 = new Punto(60, 60, 60, "green", "punto_7");
 const punto8 = new Punto(60, 60, -60, "blue", "punto_8");
-let punti = []; /*[
-  punto1,
+/*  punto1,
   punto2,
   punto3,
   punto4,
@@ -29,33 +169,33 @@ let punti = []; /*[
   punto7,
   punto8,
 ];*/
-let indice = 0;
-for (let i = -60; i <= 50; i += 10) {
-  punti[indice] = new Punto(i, -60, -60, "red", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(i, 60, -60, "blue", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(i, -60, 60, "orange", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(i, 60, 60, "orangered", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(60, i, -60, "brown", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(-60, i, -60, "yellow", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(-60, i, 60, "green", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(60, i, 60, "gray", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(-60, 60, i, "black", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(-60, -60, i, "cyan", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(60, 60, i, "chocolate", "punto_" + indice);
-  indice++;
-  punti[indice] = new Punto(60, -60, i, "pink", "punto_" + indice);
-  indice++;
-}
+/*let indice = 0;
+  for (let i = -60; i <= 50; i += 10) {
+    punti[indice] = new Punto(i, -60, -60, "red", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(i, 60, -60, "blue", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(i, -60, 60, "orange", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(i, 60, 60, "orangered", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(60, i, -60, "brown", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(-60, i, -60, "yellow", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(-60, i, 60, "green", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(60, i, 60, "gray", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(-60, 60, i, "black", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(-60, -60, i, "cyan", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(60, 60, i, "chocolate", "punto_" + indice);
+    indice++;
+    punti[indice] = new Punto(60, -60, i, "pink", "punto_" + indice);
+    indice++;
+  }*/
 /*
 for (let i = -60; i < 60; i++) {
   for (let j = -60; j < 60; j++) {
@@ -74,6 +214,9 @@ for (let i = -60; i < 60; i++) {
   }
 }
 */
+//PK NON VIENE MAI STAMPATO NEMENO lA SCRITTA PUNTI
+console.log("Punti:" + punti);
+//PARTE MOTORE 3D
 let inclinazioneX = 0;
 let inclinazioneY = 0;
 //findX();
@@ -111,8 +254,8 @@ function findY() {
 }
 sfondo.addEventListener("mousemove", function (e) {
   if (e.buttons === 1) {
-    let dirX;
-    let dirY;
+    let dirX = 0;
+    let dirY = 0;
     if (e.movementX > 0) {
       dirX = true;
       inclinazioneX += 2;
@@ -135,8 +278,8 @@ sfondo.addEventListener("mousemove", function (e) {
   }
 });
 document.addEventListener("keydown", function (event) {
-  let dirX;
-  let dirY;
+  let dirX = 0;
+  let dirY = 0;
   if (event.key.startsWith("Arrow")) {
     if (event.key === "ArrowRight") {
       inclinazioneX += 2;
@@ -161,7 +304,6 @@ document.addEventListener("keydown", function (event) {
     rotate(dirX, dirY);
   }
 });
-createPoints();
 function realFindY(punto) {
   const distanzaYZ = trovaDistanzaYZ(punto);
   const punto0YZ = new Punto(punto.getX(), -distanzaYZ, 0);
@@ -193,7 +335,7 @@ function rotate(dirX, dirY) {
     punti.forEach((punto) => {
       let x1 = punto.getX();
       let z1 = punto.getZ();
-      if (inclinazioneX !== 0) {
+      if (dirX !== 0) {
         realFindX(punto);
         const distanza = trovaDistanzaXZ(punto);
         const punto0 = new Punto(centroX, punto.getOriginalY(), -distanza);
@@ -207,7 +349,7 @@ function rotate(dirX, dirY) {
       realFindY(puntoRuotato);
       let y2 = puntoRuotato.getY();
       let z2 = puntoRuotato.getZ();
-      if (inclinazioneY !== 0) {
+      if (dirY !== 0) {
         const distanzaY = trovaDistanzaYZ(puntoRuotato);
         const i2 = puntoRuotato.getOriginalInclinazioneYZ() + Y;
         const cosy = distanzaY * Math.cos(i2 * (Math.PI / 180));
@@ -264,10 +406,10 @@ function renderPunto(punto) {
   const divpunto = punto.getDiv();
   if (!personadallAlto) {
     divpunto.style.position = "absolute";
-    divpunto.style.left = centroX + punto.getX() + "px";
-    divpunto.style.top = centroY + punto.getY() + "px";
-    divpunto.style.width = "10px";
-    divpunto.style.height = "10px";
+    divpunto.style.left = centroX + -punto.getX() + "px";
+    divpunto.style.top = centroY + -punto.getY() + "px";
+    divpunto.style.width = "8px";
+    divpunto.style.height = "8px";
     divpunto.style.backgroundColor = punto.getColor();
     /*console.log(
       "PUNTO: " + punto.getClassName() + (centroZ + Math.trunc(punto.getZ())),
@@ -279,10 +421,10 @@ function renderPunto(punto) {
       centroZ + Math.trunc(punto.getZ()) + Math.abs(zMinima);
   } else {
     divpunto.style.position = "absolute";
-    divpunto.style.left = centroX + punto.getX() + "px";
-    divpunto.style.top = centroZ + punto.getZ() + "px";
-    divpunto.style.width = "10px";
-    divpunto.style.height = "10px";
+    divpunto.style.left = centroX + -punto.getX() + "px";
+    divpunto.style.top = centroZ + -punto.getZ() + "px";
+    divpunto.style.width = "8px";
+    divpunto.style.height = "8px";
     divpunto.style.backgroundColor = punto.getColor();
     divpunto.style.zIndex =
       centroY + Math.trunc(punto.getY()) + Math.abs(zMinima);
