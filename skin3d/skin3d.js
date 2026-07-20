@@ -9,7 +9,7 @@ const centroY = sfondo.clientHeight / 2;
 const centroZ = 60;
 let personadallAlto = false;
 //DA TRASFERIRE
-let punti = [];
+let facce = /*{}*/[];
 const img = new Image();
 img.src = "../textures/skin_mc.png";
 console.log("Esisto");
@@ -59,6 +59,14 @@ img.onload = function () {
   console.log(trovaRettangolo(13, 5, 5, 4));
 
   let indicePunti = 0;
+  /*facce = {
+    face_testa_sopra: { asse: "Y", angoli: [], punti: [] },
+    face_testa_sotto: { asse: "Y", angoli: [], punti: [] },
+    face_testa_destra: { asse: "X", angoli: [], punti: [] },
+    face_testa_sinistra: { asse: "X", angoli: [], punti: [] },
+    face_testa_davanti: { asse: "Z", angoli: [], punti: [] },
+    face_testa_dietro: { asse: "Z", angoli: [], punti: [] },
+  };*/
   for (let i = -4 * 8; i < 4 * 8; i += 8) {
     for (let j = -32; j < 32; j += 8) {
       const pixelsFacciaDavanti = trovaRettangolo(40, 8, 8, 8);
@@ -72,7 +80,8 @@ img.onload = function () {
       const pixelCorrenteFacciaDavanti =
         pixelsFacciaDavanti[trovaStartIndex(8, uvI, uvJ)];
       console.log("Pixel: " + pixelCorrenteFacciaDavanti);
-      punti[indicePunti] = new Punto(
+      //facce[face_testa_davanti[angoli[0]]] = new Punto()
+      /*facce[face_testa_davanti[facce[indicePunti]]]*/facce[indicePunti] = new Punto(
         j,
         12 * 8 - i,
         4 * 8,
@@ -92,10 +101,10 @@ img.onload = function () {
       const pixelsTestaSopra = trovaRettangolo(40, 0, 8, 8);
       const pixelCorrenteTestaSopra =
         pixelsTestaSopra[trovaStartIndex(8, uvI, uvJ)];
-      punti[indicePunti] = new Punto(
+      facce[indicePunti] = new Punto(
         j,
         16 * 8,
-        i+8,
+        i + 8,
         "rgba(" +
           pixelCorrenteTestaSopra[0] +
           "," +
@@ -112,10 +121,10 @@ img.onload = function () {
       const pixelsTestaSotto = trovaRettangolo(48, 0, 8, 8);
       const pixelCorrenteTestaSotto =
         pixelsTestaSotto[trovaStartIndex(8, uvI, uvJ)];
-      punti[indicePunti] = new Punto(
+      facce[indicePunti] = new Punto(
         j,
         9 * 8,
-        i+8,
+        i + 8,
         "rgba(" +
           pixelCorrenteTestaSotto[0] +
           "," +
@@ -132,8 +141,8 @@ img.onload = function () {
       const pixelsFacciaDietro = trovaRettangolo(56, 8, 8, 8);
       const pixelCorrenteFacciaDietro =
         pixelsFacciaDietro[trovaStartIndex(8, uvI, uvJ)];
-      punti[indicePunti] = new Punto(
-        -j-8,
+      facce[indicePunti] = new Punto(
+        -j - 8,
         12 * 8 - i,
         -3 * 8,
         "rgba(" +
@@ -152,10 +161,10 @@ img.onload = function () {
       const pixelsFacciaDestra = trovaRettangolo(48, 8, 8, 8);
       const pixelCorrenteFacciaDestra =
         pixelsFacciaDestra[trovaStartIndex(8, uvI, uvJ)];
-      punti[indicePunti] = new Punto(
-        (4-1)*8,
+      facce[indicePunti] = new Punto(
+        (4 - 1) * 8,
         12 * 8 - i,
-        j+8,
+        j + 8,
         "rgba(" +
           pixelCorrenteFacciaDestra[0] +
           "," +
@@ -172,10 +181,10 @@ img.onload = function () {
       const pixelsFacciaSinistra = trovaRettangolo(32, 8, 8, 8);
       const pixelCorrenteFacciaSinistra =
         pixelsFacciaSinistra[trovaStartIndex(8, uvI, uvJ)];
-      punti[indicePunti] = new Punto(
-        -4*8,
+      facce[indicePunti] = new Punto(
+        -4 * 8,
         12 * 8 - i,
-        j+8,
+        j + 8,
         "rgba(" +
           pixelCorrenteFacciaSinistra[0] +
           "," +
@@ -297,14 +306,14 @@ for (let i = -60; i < 60; i++) {
 }
 */
 //PK NON VIENE MAI STAMPATO NEMENO lA SCRITTA PUNTI
-console.log("Punti:" + punti);
+console.log("Punti:" + facce);
 //PARTE MOTORE 3D
 let inclinazioneX = 0;
 let inclinazioneY = 0;
 //findX();
 //findY();
 function findX() {
-  punti.forEach((punto) => {
+  facce.forEach((punto) => {
     realFindX(punto);
   });
 }
@@ -330,7 +339,7 @@ function realFindX(punto) {
 }
 
 function findY() {
-  punti.forEach((punto) => {
+  facce.forEach((punto) => {
     realFindY(punto);
   });
 }
@@ -416,7 +425,7 @@ function rotate(dirX, dirY) {
     const inclinazione = [+inclinazioneAbs, -inclinazioneAbs];
     const Y = dirY ? inclinazione[0] : inclinazione[1];
     const X = dirX ? inclinazione[0] : inclinazione[1];
-    punti.forEach((punto) => {
+    facce.forEach((punto) => {
       let x1 = punto.getX();
       let z1 = punto.getZ();
       if (dirX !== 0) {
@@ -450,7 +459,7 @@ function rotate(dirX, dirY) {
   });
 }
 function createPoints() {
-  punti.forEach((punto) => {
+  facce.forEach((punto) => {
     const divPunto = document.createElement("rect");
     divPunto.classList.add(punto.getClassName());
     sfondo.appendChild(divPunto);
@@ -459,7 +468,7 @@ function createPoints() {
   });
 }
 function repaint() {
-  punti.forEach((punto) => {
+  facce.forEach((punto) => {
     if (!personadallAlto) {
       if (Math.trunc(punto.getZ()) < zMinima) {
         zMinima = Math.trunc(punto.getZ());
