@@ -9,9 +9,11 @@ const centroY = sfondo.clientHeight / 2;
 const centroZ = 60;
 let personadallAlto = false;
 //DA TRASFERIRE
-let facce = /*{}*/[];
+let facce = /*{}*/ [];
+const file = await fetch("./modello.json");
+const json = await file.json();
 const img = new Image();
-img.src = "../textures/skin_mc.png";
+img.src = json["texture_path"];
 console.log("Esisto");
 let arrayPixel = [];
 let larghezza = 0;
@@ -50,15 +52,55 @@ img.onload = function () {
       indexColori++;
     }
   }
-  console.log(arrayPixel[0], arrayPixel[1]);
+  //console.log(arrayPixel[0], arrayPixel[1]);
   /* for (let i = 0; i < arrayPixel.length - 1000; i++) {
     console.log("indice: "+i+"pixel: "+arrayPixel[i]);
   }*/
-  console.log(array[1332], array[1333], array[1334], array[1335]);
+  //console.log(array[1332], array[1333], array[1334], array[1335]);
   //console.log((13+larghezza*5)+arrayPixel[13+larghezza*5]);
-  console.log(trovaRettangolo(13, 5, 5, 4));
+  //console.log(trovaRettangolo(13, 5, 5, 4));
 
   let indicePunti = 0;
+
+  Object.entries(json.faces).forEach(([chiave, valore]) => {
+    const punti = [];
+    const u = chiave.posizione_nella_texture.u;
+    const v = chiave.posizione_nella_texture.v;
+    const uvWidth = chiave.posizione_nella_texture.width;
+    const uvHeight = chiave.posizione_nella_texture.height;
+    const alto_a_sinistra = chiave.angoli.alto_a_sinistra;
+    const alto_a_destra = chiave.angoli.alto_a_destra;
+    const basso_a_sinistra = chiave.angoli.basso_a_sinistra;
+    const basso_a_destra = chiave.angoli.basso_a_destra;
+
+    const asse = chiave.asse;
+    
+    const pixelsUv = trovaRettangolo(u, v, uvWidth, uvHeight);
+
+    const objI = { Y: "Z", X: "Y", Z: "Y" };
+    const objJ = { Y: "X", X: "Z", Z: "Z" };
+    for (
+      let i = alto_a_sinistra[objI[asse]];
+      i < alto_a_destra[objI[asse]];
+      i += 8
+    ) {
+      for (
+        let j = alto_a_sinistra[objJ[asse]];
+        j < basso_a_destra[objJ[asse]];
+        j += 8
+      ) {
+        const uvI = uvWidth / 2 + i / 8;
+        const uvJ = uvHeight / 2 + i / 8;
+        const pixel = pixelsUv[trovaStartIndex[uvWidth, uvI, uvJ]];
+        const realX = asse == "X" ? alto_a_sinistra.X : /*asse == "Y" ? j:*/ j;
+        const realY = asse == "Y" ? alto_a_destra.Y : i;
+        const realZ = asse == "Z" ? basso_a_sinistra.Z : asse == "Y" ? i : j;
+        const punto = new Punto(realX, realY, realZ, "rgba("+pixel[0]+","+pixel[1]+","+pixel[2]+","+pixel[3]+")", "punto_"+indicePunti+"_"+chiave);
+        indcePunti++;
+        facce.add(punto);
+      }
+    }
+  });
   /*facce = {
     face_testa_sopra: { asse: "Y", angoli: [], punti: [] },
     face_testa_sotto: { asse: "Y", angoli: [], punti: [] },
@@ -67,7 +109,7 @@ img.onload = function () {
     face_testa_davanti: { asse: "Z", angoli: [], punti: [] },
     face_testa_dietro: { asse: "Z", angoli: [], punti: [] },
   };*/
-  for (let i = -4 * 8; i < 4 * 8; i += 8) {
+  /*for (let i = -4 * 8; i < 4 * 8; i += 8) {
     for (let j = -32; j < 32; j += 8) {
       const pixelsFacciaDavanti = trovaRettangolo(40, 8, 8, 8);
       pixelsFacciaDavanti.forEach((p) => {
@@ -81,21 +123,22 @@ img.onload = function () {
         pixelsFacciaDavanti[trovaStartIndex(8, uvI, uvJ)];
       console.log("Pixel: " + pixelCorrenteFacciaDavanti);
       //facce[face_testa_davanti[angoli[0]]] = new Punto()
-      /*facce[face_testa_davanti[facce[indicePunti]]]*/facce[indicePunti] = new Punto(
-        j,
-        12 * 8 - i,
-        4 * 8,
-        "rgba(" +
-          pixelCorrenteFacciaDavanti[0] +
-          "," +
-          pixelCorrenteFacciaDavanti[1] +
-          "," +
-          pixelCorrenteFacciaDavanti[2] +
-          "," +
-          pixelCorrenteFacciaDavanti[3] +
-          ")",
-        "punto_" + indicePunti,
-      );
+      /*facce[face_testa_davanti[facce[indicePunti]]]*/ /*facce[indicePunti] =*/
+  /*    new Punto(
+          j,
+          12 * 8 - i,
+          4 * 8,
+          "rgba(" +
+            pixelCorrenteFacciaDavanti[0] +
+            "," +
+            pixelCorrenteFacciaDavanti[1] +
+            "," +
+            pixelCorrenteFacciaDavanti[2] +
+            "," +
+            pixelCorrenteFacciaDavanti[3] +
+            ")",
+          "punto_" + indicePunti,
+        );
       indicePunti++;
 
       const pixelsTestaSopra = trovaRettangolo(40, 0, 8, 8);
@@ -198,7 +241,7 @@ img.onload = function () {
       );
       indicePunti++;
     }
-  }
+  }*/
   createPoints();
 };
 
