@@ -13,7 +13,9 @@ export class Punto {
   #Div;
   #DistanzaXZ;
   #DistanzaYZ;
-  constructor(x, y, z, color, className) {
+  #èAngolo = "Non-Angolo";
+  #PixelSize;
+  constructor(x, y, z, color, className, pixelSize) {
     this.#X = x;
     this.#Y = y;
     this.#Z = z;
@@ -22,6 +24,39 @@ export class Punto {
     this.#OriginalZ = z;
     this.#color = color;
     this.#className = className;
+    this.#PixelSize = pixelSize;
+  }
+  getPixelSize() {return this.#PixelSize;}
+  setAngolo(newèAngolo) {
+    this.#èAngolo = newèAngolo;
+  }
+  isAltoADestra() {
+    if (this.#èAngolo == "Angolo_alto_a_destra") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isAltoASinistra() {
+    if (this.#èAngolo == "Angolo_alto_a_sinistra") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isBassoADestra() {
+    if (this.#èAngolo == "Angolo_basso_a_destra") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isBassoASinistra() {
+    if (this.#èAngolo == "Angolo_basso_a_sinistra") {
+      return true;
+    } else {
+      return false;
+    }
   }
   getX() {
     return this.#X;
