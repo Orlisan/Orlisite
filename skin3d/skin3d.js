@@ -58,7 +58,12 @@ img.onload = function () {
     if (indexColori < 4) {
       arrayColori[indexColori] = array[i];
       indexColori++;
-    } else {
+      if(i == array.length-1) {
+        arrayPixel[indexFinale] = arrayColori;
+        indexColori = 0;
+        indexFinale++;
+      }
+    } else{
       arrayPixel[indexFinale] = arrayColori;
       arrayColori = [];
       indexColori = 0;
@@ -91,6 +96,8 @@ img.onload = function () {
     const asse = valore.asse;
     const pixelSize = valore.pixel_size;
     const pixelsUv = trovaRettangolo(u, v, uvWidth, uvHeight);
+    console.log("🚀 ~ pixelsUv length: ", pixelsUv.length);
+    console.log("Size:" +arrayPixel.length);
     const dirX = valore.direzioneX;
     const dirY = valore.direzioneY;
     console.log("Qui ci sono");
@@ -120,7 +127,9 @@ img.onload = function () {
         const uvI = Math.abs(i / pixelSize - alto_a_sinistra[objI[asse]]);
         // console.log("🚀 ~ uvI:", uvI);
         const uvJ = Math.abs(j / pixelSize - alto_a_sinistra[objJ[asse]]);
-        console.log("uvI:", uvI, "uvJ:", uvJ, "j:", j);
+        console.log("face: "+chiave+" uvI:", uvI, "uvJ:", uvJ, "j:", j);
+        console.log("uvI/8"+uvI/8)
+        //CON GLI ESTREMI (Es 60, 52, 4, 12) CRASHA DI UNDEFINED!!!! é qui il problema pk se alla manica dietro destra metto uv altre es 30, 52, non crasha! 
         // console.log("🚀 ~ uvJ:", uvJ);
         // console.log(trovaStartIndex(uvWidth, uvI, uvJ));
         const pixel = pixelsUv[trovaStartIndex(uvWidth, uvI, uvJ)];
@@ -426,7 +435,7 @@ function rotate(dirX, dirY) {
 function createPoints() {
   Object.values(facce).forEach((faccia) => {
     faccia.punti.forEach((punto) => {
-      const divPunto = document.createElement("rect");
+      const divPunto = document.createElement("div");
       divPunto.classList.add(punto.getClassName());
       sfondo.appendChild(divPunto);
       punto.setDiv(divPunto);

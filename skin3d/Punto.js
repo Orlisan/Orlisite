@@ -26,7 +26,9 @@ export class Punto {
     this.#className = className;
     this.#PixelSize = pixelSize;
   }
-  getPixelSize() {return this.#PixelSize;}
+  getPixelSize() {
+    return this.#PixelSize;
+  }
   setAngolo(newèAngolo) {
     this.#èAngolo = newèAngolo;
   }
